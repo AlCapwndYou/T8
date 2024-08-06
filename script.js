@@ -4,14 +4,10 @@ const applySizeButton = document.getElementById('applySize');
 const saveLayoutButton = document.getElementById('saveLayout');
 const loadLayoutButton = document.getElementById('loadLayout');
 const videoFileInput = document.getElementById('videoFileInput');
-const loopToggle = document.getElementById('loopToggle');
-const playbackModeSelect = document.getElementById('playbackMode');
 
 applySizeButton.addEventListener('click', createGrid);
 saveLayoutButton.addEventListener('click', saveLayout);
 loadLayoutButton.addEventListener('click', loadLayout);
-loopToggle.addEventListener('change', updateLooping);
-playbackModeSelect.addEventListener('change', updatePlaybackMode);
 
 function createGrid() {
     const gridSize = parseInt(gridSizeInput.value);
@@ -32,7 +28,6 @@ function createGrid() {
     }
     
     applyDragAndDrop();
-    updatePlaybackMode(); // Apply the initial playback mode
 }
 
 function applyDragAndDrop() {
@@ -105,69 +100,9 @@ function populateGridItemWithVideo(gridItem, videoURL) {
     const video = document.createElement('video');
     video.src = videoURL;
     video.controls = true;
-    video.loop = loopToggle.checked;
+    video.loop = true;
     gridItem.classList.add('playing');
     gridItem.appendChild(video);
-    
-    applyPlaybackBehavior(video);
-}
-
-function updateLooping() {
-    const gridItems = document.querySelectorAll('.grid-item video');
-    gridItems.forEach(video => {
-        video.loop = loopToggle.checked;
-    });
-}
-
-function updatePlaybackMode() {
-    const playbackMode = playbackModeSelect.value;
-    const gridItems = document.querySelectorAll('.grid-item video');
-    
-    gridItems.forEach(video => {
-        video.pause();
-        video.removeEventListener('mouseover', handleMouseOver);
-        video.removeEventListener('mouseout', handleMouseOut);
-        video.removeEventListener('click', handleClick);
-
-        if (playbackMode === 'all') {
-            video.play();
-        } else if (playbackMode === 'mouseover') {
-            video.addEventListener('mouseover', handleMouseOver);
-            video.addEventListener('mouseout', handleMouseOut);
-        } else if (playbackMode === 'click') {
-            video.addEventListener('click', handleClick);
-        }
-    });
-}
-
-function applyPlaybackBehavior(video) {
-    const playbackMode = playbackModeSelect.value;
-    
-    if (playbackMode === 'all') {
-        video.play();
-    } else if (playbackMode === 'mouseover') {
-        video.addEventListener('mouseover', handleMouseOver);
-        video.addEventListener('mouseout', handleMouseOut);
-    } else if (playbackMode === 'click') {
-        video.addEventListener('click', handleClick);
-    }
-}
-
-function handleMouseOver(event) {
-    event.target.play();
-}
-
-function handleMouseOut(event) {
-    event.target.pause();
-}
-
-function handleClick(event) {
-    const video = event.target;
-    if (video.paused) {
-        video.play();
-    } else {
-        video.pause();
-    }
 }
 
 function saveLayout() {
@@ -181,15 +116,10 @@ function saveLayout() {
         }
     });
     localStorage.setItem('gridLayout', JSON.stringify(layout));
-    localStorage.setItem('loopSetting', loopToggle.checked);
-    localStorage.setItem('playbackMode', playbackModeSelect.value);
 }
 
 function loadLayout() {
     const savedLayout = JSON.parse(localStorage.getItem('gridLayout'));
-    const savedLoopSetting = JSON.parse(localStorage.getItem('loopSetting'));
-    const savedPlaybackMode = localStorage.getItem('playbackMode');
-
     if (savedLayout) {
         const gridSize = Math.sqrt(savedLayout.length);
         gridSizeInput.value = gridSize;
@@ -205,16 +135,6 @@ function loadLayout() {
         });
     } else {
         alert('No saved layout found');
-    }
-
-    if (savedLoopSetting !== null) {
-        loopToggle.checked = savedLoopSetting;
-        updateLooping();
-    }
-
-    if (savedPlaybackMode) {
-        playbackModeSelect.value = savedPlaybackMode;
-        updatePlaybackMode();
     }
 }
 
