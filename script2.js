@@ -29,7 +29,7 @@ tekkenCharacters.forEach(character => {
     const gridItem = document.createElement('div');
     gridItem.className = 'grid-item';
     gridItem.innerHTML = `
-        <img src="media/${character}.webp" alt="${character}">
+        <img src="./media/${character}.webp" alt="${character}">
         <p>${character}</p>
     `;
     gridItem.addEventListener('click', () => {
