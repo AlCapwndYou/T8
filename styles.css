@@ -40,6 +40,19 @@ body {
 .grid-item.playing video {
     display: block;
 }
+.thumbnail.container {
+    text-transform: uppercase;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    position: absolute;
+    background-size: contain;
+    z-index: 5;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    transition: all .5s ease-out;
+    clip-path: polygon(5% 0%, 100% 0%, 100% 20%, 100% 95%, 95% 100%, 20% 100%, 0% 100%, 0% 5%);
+}
 
 .thumbnail.image {
     background:linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 54.62%), url("https://media.graphassets.com/pV8nXDdUSoWz68S6bemw") center top / 102% no-repeat;
