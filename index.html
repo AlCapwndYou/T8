@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Video Grid Layout</title>
+    <title>TEKKEN 8 - Master Anti-Character Reference Tool</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="menu-icon">&#9776;</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Grid of 36 Items -->
+<!-- Navigation Bar -->
+<nav>
+    <img src="./media/tekken8-logo-sm.png" class="title-image"/>
+    <div class="menu-icon">&#9776;</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+    
+    <!-- Grid of Tekken Characters -->
     <div class="grid-container">
         <!-- Grid items will be generated dynamically by JavaScript -->
     </div>
-        <!-- Toggle for video playback behavior -->
-        <div class="toggle-container">
-            <label for="toggle-playback">Play video only when highlighted</label>
-            <input type="checkbox" id="toggle-playback">
-        </div>
-        <!-- Controls for Playlist -->
+
+    <!-- Controls for Playlist -->
     <div class="playlist-controls">
-        <button id="show-playlist">Show Current Playlist</button>
+        <span id="active-playlist">Active Playlist: All</span>
         <select id="select-playlist">
+            <option value="all">All</option>
             <option value="favorites">Favorites</option>
             <option value="important">Important</option>
         </select>
         <button id="load-playlist">Load Playlist</button>
     </div>
+    
+    <!-- Toggle for video playback behavior -->
+    <div class="toggle-container">
+        <label for="toggle-playback">Play video only when highlighted</label>
+        <input type="checkbox" id="toggle-playback">
+    </div>
+
     <!-- Video Grid Layout -->
     <div class="video-grid">
         <!-- Video grid items will be generated dynamically by JavaScript -->
     </div>
-
     <script src="script2.js"></script>
 </body>
 </html>

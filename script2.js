@@ -1,38 +1,46 @@
 // Tekken 8 characters for the grid
 const tekkenCharacters = [
-    'Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Eddy', 'Feng',
-    'Gigas', 'Heihachi', 'Hwoarang', 'Jin', 'Julia', 'Kazuya', 'King', 'Kuma',
-    'Lars', 'Law', 'Lee', 'Lili', 'Ling', 'Lucky Chloe', 'Marduk', 'Miguel',
-    'Nina', 'Paul', 'Raven', 'Shaheen', 'Steve', 'Xiaoyu', 'Yoshimitsu', 'Zafina'
+    'Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
+    'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
+    'Kuma', 'Lars', 'Law', 'Lee', 'Lili', 'Nina', 'Panda','Paul', 'Raven',
+    'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina'
 ];
 
 const videos = {
     Alisa: ['11.mp4', '122.mp4'],
-    Azucena: ['Azucena-11.mp4', 'Azucena-21.mp4'],
+    Azucena: ['12.mp4', '32.mp4', '33.mp4'],
     Asuka: ['Asuka-31.mp4', 'Asuka-41.mp4'],
-    Bryan: ['Bryan-51.mp4', 'Bryan-61.mp4']
+    Bryan: ['Bryan-51.mp4', 'Bryan-61.mp4'],
+    // Add more characters as needed
 };
 
 let playlists = {
+    all: [],
     favorites: [],
     important: []
 };
 
-let currentPlaylist = 'favorites';
+let currentCharacter = 'Alisa';
+let currentPlaylist = 'all';
 
-// Create the grid of Tekken characters with dummy images and text
+// Create the grid of Tekken characters with images and text
 const gridContainer = document.querySelector('.grid-container');
 tekkenCharacters.forEach(character => {
     const gridItem = document.createElement('div');
     gridItem.className = 'grid-item';
     gridItem.innerHTML = `
-        <img src="https://via.placeholder.com/120" alt="${character}">
+        <img src="media/${character}.webp" alt="${character}">
         <p>${character}</p>
     `;
+    gridItem.addEventListener('click', () => {
+        currentCharacter = character;
+        loadVideoGrid(character, currentPlaylist);
+        document.getElementById('active-playlist').innerText = `Active Playlist: ${currentCharacter} - ${capitalizeFirstLetter(currentPlaylist)}`;
+    });
     gridContainer.appendChild(gridItem);
 });
 
-// Create the video grid dynamically with dummy video files and text
+// Create the video grid dynamically with video files and text
 const videoGrid = document.querySelector('.video-grid');
 function loadVideoGrid() {
     videoGrid.innerHTML = '';
