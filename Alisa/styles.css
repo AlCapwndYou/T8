@@ -40,7 +40,3 @@ body {
 .grid-item.playing video {
     display: block;
 }
-
-.thumbnail.image {
-    background:linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 54.62%), url("https://media.graphassets.com/pV8nXDdUSoWz68S6bemw") center top / 102% no-repeat;
-}
