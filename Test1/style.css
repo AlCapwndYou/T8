@@ -32,15 +32,33 @@ body {
     flex-wrap: wrap;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
+/* Style for the move legend icons */
+.legend-item span {
+    display: inline-block;
+    margin: 0 5px;
+    position: relative;
+    cursor: pointer;
 }
 
-.legend-item span {
-    margin-right: 5px;
-    font-size: 24px;
+/* Tooltip styling */
+.legend-item span::after {
+    content: attr(title);
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.legend-item span:hover::after {
+    display: block;
 }
 
 #move-list {

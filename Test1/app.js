@@ -99,7 +99,7 @@ function renderMoves(moves, character) {
         favoriteIcon.addEventListener('click', () => toggleFavorite(character, move.name, favoriteIcon));
         moveDiv.appendChild(favoriteIcon);
 
-        // Render move properties with icons
+        // Render move properties with icons (without text labels)
         const legendDiv = document.createElement('div');
         legendDiv.classList.add('legend');
 
@@ -108,14 +108,12 @@ function renderMoves(moves, character) {
                 const legendItem = document.createElement('div');
                 legendItem.classList.add('legend-item');
 
-                 const iconSpan = document.createElement('span');
-                 iconSpan.textContent = iconMap[property];
-
-                 const textSpan = document.createElement('span');
-                 textSpan.textContent = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                const iconSpan = document.createElement('span');
+                iconSpan.textContent = iconMap[property];
+                iconSpan.classList.add('icon-tooltip');
+                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()); // Add tooltip text
 
                 legendItem.appendChild(iconSpan);
-                legendItem.appendChild(textSpan);
                 legendDiv.appendChild(legendItem);
             }
         });
