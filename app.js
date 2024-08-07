@@ -5,7 +5,7 @@ const iconMap = {
     sidestepLeft: '👟⬅️',
     sidewalkRight: '🚶➡️',
     sidewalkLeft: '🚶⬅️',
-    heat: `media/heat4-small.png`,
+    heat: '<img src="media/heat4-small.png" alt="Heat" />',
     launcher: '⚠️',
     keyMove: '🔑',
     duckable: '🦆',
@@ -16,7 +16,6 @@ const iconMap = {
     extensionSingle: '➡️',
     extensionMultiple: '🔀'
 };
-
 let currentCharacter = 'Alisa'; // Default character
 const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
 'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
