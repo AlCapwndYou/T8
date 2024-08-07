@@ -10,6 +10,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust width as needed */
     grid-auto-rows: minmax(100px, auto); /* Ensure rows adjust based on content */
+    background-color: #333;
     gap: 10px;
     padding: 10px;
     overflow-y: auto; /* Add vertical scrolling if needed */
@@ -19,11 +20,16 @@ body {
 
 .character-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
     cursor: pointer;
-    padding: 5px;
-    color: #fff;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .character-item:hover {
