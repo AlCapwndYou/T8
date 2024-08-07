@@ -25,7 +25,7 @@ body {
     margin-right: 5px;
 }
 
-#legend /* Style for the move legend container */
+/* Style for the move legend container */
 .legend {
     display: flex; /* Use flexbox to keep items on the same line */
     flex-wrap: wrap; /* Allows wrapping if the container is too small */
@@ -68,6 +68,7 @@ body {
     flex-direction: column;
     gap: 20px; /* Adds space between different moves */
 }
+
 
 .move {
     border: 1px solid #ddd;
