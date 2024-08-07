@@ -126,9 +126,38 @@ function toggleFavorite(character, moveName, iconElement) {
         iconElement.classList.add('active');
     }
 }
+// Populate the navigation menu
+function populateNavigation() {
+    const nav = document.getElementById('character-nav');
+    nav.innerHTML = ''; // Clear existing content
+
+    characters.forEach(character => {
+        const characterItem = document.createElement('div');
+        characterItem.classList.add('character-item');
+        characterItem.dataset.character = character;
+        
+        const img = document.createElement('img');
+        img.src = `media/${character}.webp`; // Adjust to other formats if needed
+        img.alt = character;
+        img.classList.add('character-icon');
+        characterItem.appendChild(img);
+        
+        const name = document.createElement('span');
+        name.textContent = character;
+        characterItem.appendChild(name);
+        
+        characterItem.addEventListener('click', () => {
+            currentCharacter = character;
+            loadCharacterData(character); // Load data for the selected character
+        });
+
+        nav.appendChild(characterItem);
+    });
+}
 
 // Initialize the page
 function init() {
+    populateNavigation(); // Populate navigation menu
     loadCharacterData(currentCharacter);
 
     // Event listeners for playlist management

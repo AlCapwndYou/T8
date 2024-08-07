@@ -73,7 +73,6 @@ body {
 .move .favorite.active {
     opacity: 1; /* Full opacity when active */
 }
-
 /* Container for move legend icons */
 .legend {
     display: flex; /* Use flexbox to keep items on the same line */
@@ -91,7 +90,11 @@ body {
 }
 
 /* Tooltip styling */
-.legend-item span::after {
+.icon-tooltip {
+    display: inline-block; /* Ensures icons are on the same line */
+}
+
+.icon-tooltip::after {
     content: attr(title);
     display: none;
     position: absolute;
@@ -107,7 +110,7 @@ body {
     pointer-events: none;
 }
 
-.legend-item span:hover::after {
+.legend-item:hover .icon-tooltip::after {
     display: block;
 }
 
