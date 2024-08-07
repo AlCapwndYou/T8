@@ -29,7 +29,31 @@ function initializeCharacterNav() {
         // Load character icon
         const characterIcon = document.createElement('img');
         characterIcon.classList.add('character-icon');
-        characterIcon.src = `media/${character}/${character}.webp`; // Using exact character name
+        
+        // Array of possible formats
+        const formats = ['webp', 'png', 'jpeg'];
+        
+        // Function to try each format
+        function tryLoadImage(index = 0) {
+            if (index >= formats.length) {
+                console.error(`No valid image format found for character: ${character}`);
+                return;
+            }
+            
+            const format = formats[index];
+            const imgSrc = `media/${character}/${character}.${format}`;
+            const img = new Image();
+            img.src = imgSrc;
+            img.onload = () => {
+                characterIcon.src = imgSrc;
+            };
+            img.onerror = () => {
+                tryLoadImage(index + 1);
+            };
+        }
+        
+        tryLoadImage(); // Start checking formats
+
         characterItem.appendChild(characterIcon);
 
         characterItem.addEventListener('click', () => {
@@ -40,6 +64,7 @@ function initializeCharacterNav() {
         nav.appendChild(characterItem);
     });
 }
+
 
 // Function to load character data from JSON file
 function loadCharacterData(character) {
