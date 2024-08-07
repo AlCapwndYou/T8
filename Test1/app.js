@@ -29,7 +29,7 @@ function initializeCharacterNav() {
         // Load character icon
         const characterIcon = document.createElement('img');
         characterIcon.classList.add('character-icon');
-        characterIcon.src = `media/${character.toLowerCase()}/${character.toLowerCase()}.webp`;
+        characterIcon.src = `media/${character}/${character}.webp`; // Using exact character name
         characterItem.appendChild(characterIcon);
 
         characterItem.addEventListener('click', () => {
@@ -43,7 +43,7 @@ function initializeCharacterNav() {
 
 // Function to load character data from JSON file
 function loadCharacterData(character) {
-    fetch(`${character.toLowerCase()}.json`)
+    fetch(`${character}.json`) // Using exact character name
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -71,7 +71,7 @@ function renderMoves(moves, character) {
         moveDiv.dataset.move = move.input;
 
         const moveVideo = document.createElement('video');
-        moveVideo.src = `media/${character.toLowerCase()}/${move.input}.mp4`;
+        moveVideo.src = `media/${character}/${move.input}.mp4`; // Using exact character name
         moveVideo.controls = true;
         moveDiv.appendChild(moveVideo);
 
