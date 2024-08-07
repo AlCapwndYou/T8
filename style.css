@@ -7,13 +7,14 @@ body {
 }
 
 #character-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust width as needed */
+    grid-auto-rows: minmax(100px, auto); /* Ensure rows adjust based on content */
     gap: 10px;
-    overflow-x: auto; /* Scroll if content overflows */
-    white-space: nowrap; /* Keep items on one line */
+    padding: 10px;
+    overflow-y: auto; /* Add vertical scrolling if needed */
+    height: 100vh; /* Adjust based on your layout requirements */
+    box-sizing: border-box;
 }
 
 .character-item {
