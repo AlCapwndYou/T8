@@ -2,14 +2,14 @@
     "character": "Alisa",
     "moves": [
       {
-        "input": "df1",
-        "name": "Down Forward 1",
+        "input": "uf1",
+        "name": "Up Forward 1",
         "hitRange": "mid",
         "frames": 13,
         "block": -1,
         "hit": "+4",
         "properties": ["punishable", "sidestepRight", "extensionSingle"],
-        "extensions": ["df1,2"]
+        "extensions": ["uf1,2"]
       },
       {
         "input": "f1+2",
