@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#character-nav {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #333;
+    padding: 10px;
+}
+
+#character-nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#character-nav img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+#legend {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.legend-item span {
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+#move-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px;
+}
+
+.move {
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: relative;
+}
+
+.move video {
+    width: 100%;
+    height: auto;
+}
+
+.move .favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.move .favorite.active {
+    opacity: 1;
+}
+
+.move h3 {
+    margin-top: 5px;
+    font-size: 18px;
+}
