@@ -9,9 +9,9 @@ body {
 
 #character-nav {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Adjust width as needed */
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); /* Adjust width as needed */
     grid-auto-rows: minmax(100px, auto); /* Ensure rows adjust based on content */
-    gap: 5px;
+    gap: 3px;
     padding: 5px;
     overflow-y: auto; /* Add vertical scrolling if needed */
     height: auto;
@@ -25,7 +25,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: bottom;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -37,6 +37,7 @@ body {
 .character-item:hover {
     background: linear-gradient(to right, rgb(160, 49, 123),rgb(91, 126, 150));
     color: rgb(190, 0, 110);
+    transition: color 0.3, transform 0.3s;
 }
 
 .character-icon {
@@ -44,7 +45,6 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    margin-right: 10px;
 }
 
 /* Styles for the filter drop down */
