@@ -109,3 +109,21 @@ body {
 .legend-item span:hover::after {
     display: block;
 }
+
+#playlist-controls {
+    margin-bottom: 20px;
+}
+
+#playlist-controls button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#playlist-controls button:hover {
+    background-color: #0056b3;
+}

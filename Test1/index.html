@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tekken 7 Character Moves</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
 </head>
 <body>
     <nav id="character-nav">
         <!-- Character list will be dynamically populated here -->
     </nav>
-
+    
+    <div id="playlist-controls">
+        <button id="save-playlist">Save Playlist</button>
+        <button id="load-playlist">Load Playlist</button>
+        <button id="clear-playlist">Clear Playlist</button>
+    </div>
+    
     <div id="move-list">
         <!-- Moves will be dynamically populated here -->
     </div>

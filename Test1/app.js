@@ -1,3 +1,6 @@
+// Initialize Sortable.js
+let sortable;
+
 // Define the icon map for move properties
 const iconMap = {
     punishable: '👊',
@@ -70,6 +73,39 @@ function loadCharacterMoves(character) {
         .catch(error => console.error('Error loading character JSON:', error));
 }
 
+function enableSorting() {
+    sortable = new Sortable(document.getElementById('move-list'), {
+        animation: 150,
+        onEnd: function (evt) {
+            saveCustomPlaylist();
+        }
+    });
+}
+
+function saveCustomPlaylist() {
+    const moveItems = document.querySelectorAll('.move');
+    const playlist = Array.from(moveItems).map(item => item.dataset.move);
+    localStorage.setItem('customPlaylist', JSON.stringify(playlist));
+}
+
+function loadCustomPlaylist() {
+    const playlist = JSON.parse(localStorage.getItem('customPlaylist'));
+    if (playlist) {
+        const moveList = document.getElementById('move-list');
+        playlist.forEach(move => {
+            const moveItem = document.querySelector(`.move[data-move="${move}"]`);
+            if (moveItem) {
+                moveList.appendChild(moveItem);
+            }
+        });
+    }
+}
+
+function clearCustomPlaylist() {
+    localStorage.removeItem('customPlaylist');
+    renderMoves(allMoves, currentCharacter); // Reload the default moves
+}
+
 function renderMoves(moves, character) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
@@ -77,8 +113,8 @@ function renderMoves(moves, character) {
     moves.forEach(move => {
         const moveDiv = document.createElement('div');
         moveDiv.classList.add('move');
+        moveDiv.dataset.move = move.input; // Set data attribute for sorting and playlist
 
-        // Match the move input with the video filename
         const moveVideo = document.createElement('video');
         moveVideo.src = `media/${character}/${move.input}.mp4`;
         moveVideo.controls = true;
@@ -88,7 +124,6 @@ function renderMoves(moves, character) {
         moveName.textContent = move.name;
         moveDiv.appendChild(moveName);
 
-        // Add favorite functionality
         const favoriteIcon = document.createElement('span');
         favoriteIcon.classList.add('favorite');
         favoriteIcon.textContent = '❤️';
@@ -99,7 +134,6 @@ function renderMoves(moves, character) {
         favoriteIcon.addEventListener('click', () => toggleFavorite(character, move.name, favoriteIcon));
         moveDiv.appendChild(favoriteIcon);
 
-        // Render move properties with icons (without text labels)
         const legendDiv = document.createElement('div');
         legendDiv.classList.add('legend');
 
@@ -111,7 +145,7 @@ function renderMoves(moves, character) {
                 const iconSpan = document.createElement('span');
                 iconSpan.textContent = iconMap[property];
                 iconSpan.classList.add('icon-tooltip');
-                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()); // Add tooltip text
+                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 
                 legendItem.appendChild(iconSpan);
                 legendDiv.appendChild(legendItem);
@@ -121,7 +155,18 @@ function renderMoves(moves, character) {
         moveDiv.appendChild(legendDiv);
         moveList.appendChild(moveDiv);
     });
+
+    enableSorting(); // Enable sorting after moves are rendered
+    loadCustomPlaylist(); // Load custom playlist if exists
 }
+
+// Call renderMoves function with your data to initialize the page
+renderMoves(allMoves, currentCharacter);
+
+// Playlist management functions
+document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
+document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
+document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
 
 function toggleFavorite(character, moveName, iconElement) {
     const key = `${character}-${moveName}`;
