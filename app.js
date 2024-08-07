@@ -5,7 +5,7 @@ const iconMap = {
     sidestepLeft: '👟⬅️',
     sidewalkRight: '🚶➡️',
     sidewalkLeft: '🚶⬅️',
-    heat: '🔥',
+    heat: `media/heat4-small.png`,
     launcher: '⚠️',
     keyMove: '🔑',
     duckable: '🦆',
