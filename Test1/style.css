@@ -25,23 +25,19 @@ body {
     margin-right: 5px;
 }
 
-#legend {
-    font-size:small;
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
+#legend /* Style for the move legend container */
+.legend {
+    display: flex; /* Use flexbox to keep items on the same line */
+    flex-wrap: wrap; /* Allows wrapping if the container is too small */
+    align-items: center; /* Aligns items vertically */
+    gap: 10px; /* Adds spacing between icons */
 }
 
-/* Style for the move legend icons container */
+/* Style for each legend item (icon) */
 .legend-item {
-    display: inline-block; /* Keeps icons on the same line */
-    margin: 0 5px;
+    display: inline-flex; /* Ensures icon and tooltip are treated as inline elements */
+    align-items: center;
     position: relative;
-}
-
-/* Style for the move legend icons */
-.legend-item span {
-    display: inline-block; /* Ensures icons stay inline */
     cursor: pointer;
 }
 
@@ -66,12 +62,11 @@ body {
     display: block;
 }
 
-
+/* Adjustments for move list container */
 #move-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between different moves */
 }
 
 .move {
