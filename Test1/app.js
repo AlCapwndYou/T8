@@ -1,18 +1,20 @@
 // Define icon map for move properties
 const iconMap = {
-    "SSL": "👟⬅️",
-    "SSR": "👟➡️",
-    "BLK": "🛡️", // Block Punish
-    "HEAT": "🔥", // Heat
-    "LAUNCHER": "⚠️", // Launcher
-    "KEY": "🔑", // Key Move
-    "DUCK": "🦆", // Duckable
-    "🎰": "🎰", // Mixup
-    "PLUS": "🛑", // Plus On Block
-    "PARRY": "⚔️", // Parryable
-    "SABAKI": "🔄", // Sabaki
-    "EXT_SINGLE": "➡️", // Extensions (single option)
-    "EXT_MULTIPLE": "🔄" // Extensions (multiple options)
+    punishable: '👊',
+    sidestepRight: '👟➡️',
+    sidestepLeft: '👟⬅️',
+    sidewalkRight: '🚶➡️',
+    sidewalkLeft: '🚶⬅️',
+    heat: '🔥',
+    launcher: '⚠️',
+    keyMove: '🔑',
+    duckable: '🦆',
+    mixup: '🎰',
+    plusOnBlock: '🛑',
+    parryable: '⚔️',
+    sabaki: '🔄',
+    extensionSingle: '➡️',
+    extensionMultiple: '🔀'
 };
 
 let currentCharacter = 'Alisa'; // Default character
