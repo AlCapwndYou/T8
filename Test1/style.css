@@ -1,97 +1,102 @@
+/* Basic styles for the body and page layout */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 #character-nav {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     background-color: #333;
+    padding: 10px;
+    gap: 10px;
+    overflow-x: auto; /* Scroll if content overflows */
+    white-space: nowrap; /* Keep items on one line */
+}
+
+.character-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.character-item:hover {
+    background-color: #555;
+}
+
+.character-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+#move-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
     padding: 10px;
 }
 
-#character-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 10px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-}
-
-#character-nav img {
-    width: 40px;
-    margin-right: 5px;
-}
-
-/* Container for the moves grid */
-#move-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust based on screen size */
-    gap: 20px; /* Space between move items */
-    padding: 20px;
-}
-
-/* Individual move container */
 .move {
-    background-color: #f4f4f4;
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative; /* Allows for positioning of the favorite icon */
+    position: relative;
 }
 
-/* Video element styling */
 .move video {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    height: auto;
+    border-radius: 4px;
 }
 
-/* Move name styling */
 .move h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    text-align: center;
+    margin: 10px 0;
+    font-size: 1.1em;
 }
 
-/* Favorite icon styling */
-.move .favorite {
-    font-size: 1.5em;
+.favorite {
     cursor: pointer;
-    position: absolute; /* Position the favorite icon absolutely within the move card */
+    font-size: 1.5em;
+    position: absolute;
     top: 10px;
     right: 10px;
-    opacity: 0.5; /* Initial opacity */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
 }
 
-.move .favorite.active {
-    opacity: 1; /* Full opacity when active */
+.favorite.active {
+    opacity: 1;
 }
-/* Container for move legend icons */
+
+.favorite.inactive {
+    opacity: 0.5;
+}
+
+/* Styles for legend icons */
 .legend {
-    display: flex; /* Use flexbox to keep items on the same line */
-    flex-wrap: wrap; /* Allows wrapping if necessary */
-    align-items: center;
-    gap: 10px; /* Space between icons */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-/* Style for each legend item (icon) */
 .legend-item {
-    display: inline-flex; /* Keeps icon and tooltip inline */
+    display: inline-flex;
     align-items: center;
     position: relative;
-    cursor: pointer;
 }
 
-/* Tooltip styling */
 .icon-tooltip {
-    display: inline-block; /* Ensures icons are on the same line */
+    display: inline-block;
+    font-size: 1.2em;
 }
 
 .icon-tooltip::after {
@@ -114,19 +119,22 @@ body {
     display: block;
 }
 
-/* Playlist controls */
+/* Playlist management buttons */
 #playlist-controls {
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
 }
 
 #playlist-controls button {
-    margin-right: 10px;
-    padding: 10px 15px;
     background-color: #007bff;
-    color: white;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #playlist-controls button:hover {

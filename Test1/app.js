@@ -17,6 +17,7 @@ const iconMap = {
 let sortable;
 let allMoves = []; // Moves data will be populated here
 let currentCharacter = 'Alisa'; // Default character for example
+const characters = ['Alisa', 'Kazuya', 'Paul']; // Example list of characters
 
 // Fetch and load moves for the selected character
 function loadCharacterData(character) {
@@ -126,6 +127,7 @@ function toggleFavorite(character, moveName, iconElement) {
         iconElement.classList.add('active');
     }
 }
+
 // Populate the navigation menu
 function populateNavigation() {
     const nav = document.getElementById('character-nav');
