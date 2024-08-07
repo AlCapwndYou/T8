@@ -1,0 +1,56 @@
+{
+    "character": "Asuka",
+    "moves": [
+      {
+        "input": "uf1",
+        "name": "Up Forward 1",
+        "hitRange": "mid",
+        "frames": 13,
+        "block": -1,
+        "hit": "+4",
+        "properties": ["punishable", "sidestepRight", "extensionSingle"],
+        "extensions": ["uf1,2"]
+      },
+      {
+        "input": "f1+2",
+        "name": "Mach Breaker",
+        "hitRange": "mid",
+        "frames": 18,
+        "block": -12,
+        "hit": "KND",
+        "properties": ["launcher", "heat"],
+        "extensions": []
+      },
+      {
+        "input": "uf3",
+        "name": "Hop Kick",
+        "hitRange": "mid",
+        "frames": 15,
+        "block": -13,
+        "hit": "launch",
+        "properties": ["launcher", "sidestepLeft"],
+        "extensions": []
+      },
+      {
+        "input": "b1",
+        "name": "Back 1",
+        "hitRange": "high",
+        "frames": 10,
+        "block": -1,
+        "hit": "+3",
+        "properties": ["duckable", "parryable"],
+        "extensions": []
+      },
+      {
+        "input": "ws4",
+        "name": "While Standing 4",
+        "hitRange": "mid",
+        "frames": 11,
+        "block": -5,
+        "hit": "+6",
+        "properties": ["punishable", "sidestepLeft", "extensionMultiple"],
+        "extensions": ["ws4,4", "ws4,3"]
+      }
+    ]
+  }
+  
