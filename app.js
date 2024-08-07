@@ -18,7 +18,10 @@ const iconMap = {
 };
 
 let currentCharacter = 'Alisa'; // Default character
-const characters = ['Alisa', 'Bryan', 'Hwoarang']; // Example character list
+const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
+'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
+'Kuma', 'Lars', 'Law', 'Lee', 'Lili', 'Nina', 'Panda','Paul', 'Raven',
+'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina']; // Character list
 
 // Function to initialize the navigation menu
 function initializeCharacterNav() {
@@ -43,7 +46,7 @@ function initializeCharacterNav() {
             }
             
             const format = formats[index];
-            const imgSrc = `media/${character}/${character}.${format}`;
+            const imgSrc = `media/${character}.${format}`;
             const img = new Image();
             img.src = imgSrc;
             img.onload = () => {
