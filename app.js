@@ -23,6 +23,28 @@ const iconMap = {
     extensionMultiple: '🔀'
 };
 
+// Event listener for the filter menu
+document.getElementById('filter-menu').addEventListener('change', function() {
+    const selectedFilter = this.value;
+    filterMoves(selectedFilter);
+});
+
+// Function to filter and render moves based on the selected property
+function filterMoves(property) {
+    fetch(`${currentCharacter}.json`)
+        .then(response => response.json())
+        .then(data => {
+            let filteredMoves;
+            if (property === 'all') {
+                filteredMoves = data.moves;
+            } else {
+                filteredMoves = data.moves.filter(move => move.properties.includes(property));
+            }
+            renderMoves(filteredMoves, currentCharacter);
+        })
+        .catch(error => console.error('Error filtering moves:', error));
+}
+
 // Function to initialize the navigation menu
 function initializeCharacterNav() {
     const nav = document.getElementById('character-nav');
