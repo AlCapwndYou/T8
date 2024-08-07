@@ -63,11 +63,10 @@ function imageExists(path) {
     return http.status !== 404;
 }
 
-// Function to load and display moves for a selected character
 function loadCharacterMoves(character) {
     fetch(`${character}.json`)
         .then(response => response.json())
-        .then(moves => renderMoves(moves, character))
+        .then(data => renderMoves(data.moves, character)) // Access the 'moves' array within the JSON
         .catch(error => console.error('Error loading character JSON:', error));
 }
 
