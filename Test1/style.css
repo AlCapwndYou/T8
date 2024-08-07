@@ -32,11 +32,16 @@ body {
     flex-wrap: wrap;
 }
 
-/* Style for the move legend icons */
-.legend-item span {
-    display: inline-block;
+/* Style for the move legend icons container */
+.legend-item {
+    display: inline-block; /* Keeps icons on the same line */
     margin: 0 5px;
     position: relative;
+}
+
+/* Style for the move legend icons */
+.legend-item span {
+    display: inline-block; /* Ensures icons stay inline */
     cursor: pointer;
 }
 
@@ -60,6 +65,7 @@ body {
 .legend-item span:hover::after {
     display: block;
 }
+
 
 #move-list {
     display: grid;
