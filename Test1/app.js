@@ -46,7 +46,7 @@ function loadCharacters() {
 // Function to determine the correct image path for a character
 function getImagePath(character) {
     for (let format of imageFormats) {
-        let imagePath = `media/${character}/${character}.${format}`;
+        let imagePath = `media/${character}.${format}`;
         if (imageExists(imagePath)) {
             return imagePath;
         }
