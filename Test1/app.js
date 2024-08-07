@@ -44,11 +44,20 @@ function initializeCharacterNav() {
 // Function to load character data from JSON file
 function loadCharacterData(character) {
     fetch(`${character.toLowerCase()}.json`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
             renderMoves(data.moves, character);
         })
-        .catch(error => console.error('Error loading character data:', error));
+        .catch(error => {
+            console.error('Error loading character data:', error);
+            // Optionally, you can display a user-friendly message or handle the error gracefully
+            document.getElementById('move-list').innerHTML = '<p>Error loading character data. Please try again later.</p>';
+        });
 }
 
 // Function to render moves in the grid
