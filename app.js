@@ -129,7 +129,7 @@ function renderMoves(moves, character) {
                 legendItem.classList.add('legend-item');
 
                 const iconSpan = document.createElement('span');
-                iconSpan.textContent = iconMap[property];
+                iconSpan.innerHTML = iconMap[property];
                 iconSpan.classList.add('icon-tooltip');
                 iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 
