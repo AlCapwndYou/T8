@@ -25,17 +25,58 @@ body {
     margin-right: 5px;
 }
 
-/* Style for the move legend container */
+/* Container for the moves grid */
+#move-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust based on screen size */
+    gap: 20px; /* Space between move items */
+    padding: 20px;
+}
+
+/* Individual move container */
+.move {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Video element styling */
+.move video {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Move name styling */
+.move h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Favorite icon styling */
+.move .favorite {
+    font-size: 1.5em;
+    cursor: pointer;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+/* Container for move legend icons */
 .legend {
     display: flex; /* Use flexbox to keep items on the same line */
-    flex-wrap: wrap; /* Allows wrapping if the container is too small */
-    align-items: center; /* Aligns items vertically */
-    gap: 10px; /* Adds spacing between icons */
+    flex-wrap: wrap; /* Allows wrapping if necessary */
+    align-items: center;
+    gap: 10px; /* Space between icons */
 }
 
 /* Style for each legend item (icon) */
 .legend-item {
-    display: inline-flex; /* Ensures icon and tooltip are treated as inline elements */
+    display: inline-flex; /* Keeps icon and tooltip inline */
     align-items: center;
     position: relative;
     cursor: pointer;
@@ -60,41 +101,4 @@ body {
 
 .legend-item span:hover::after {
     display: block;
-}
-
-/* Adjustments for move list container */
-#move-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Adds space between different moves */
-}
-
-
-.move {
-    border: 1px solid #ddd;
-    padding: 10px;
-    position: relative;
-}
-
-.move video {
-    width: 100%;
-    height: auto;
-}
-
-.move .favorite {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-.move .favorite.active {
-    opacity: 1;
-}
-
-.move h3 {
-    margin-top: 5px;
-    font-size: 18px;
 }
