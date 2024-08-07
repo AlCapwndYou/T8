@@ -3,50 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEKKEN 8 - Master Anti-Character Reference Tool</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <title>Tekken 7 Character Moves</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Navigation Bar -->
-<nav>
-    <img src="./media/tekken8-logo-sm.png" class="title-image"/>
-    <div class="menu-icon">&#9776;</div>
-    <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
-    
-    <!-- Grid of Tekken Characters -->
-    <div class="grid-container">
-        <!-- Grid items will be generated dynamically by JavaScript -->
-    </div>
+    <!-- Navigation bar for selecting characters -->
+    <div id="character-nav"></div>
 
-    <!-- Controls for Playlist -->
-    <div class="playlist-controls">
-        <span id="active-playlist">Active Playlist: All</span>
-        <select id="select-playlist">
-            <option value="all">All</option>
-            <option value="favorites">Favorites</option>
-            <option value="important">Important</option>
-        </select>
+    <!-- Playlist controls -->
+    <div id="playlist-controls">
+        <button id="save-playlist">Save Playlist</button>
         <button id="load-playlist">Load Playlist</button>
-    </div>
-    
-    <!-- Toggle for video playback behavior -->
-    <div class="toggle-container">
-        <label for="toggle-playback">Play video only when highlighted</label>
-        <input type="checkbox" id="toggle-playback">
+        <button id="clear-playlist">Clear Playlist</button>
     </div>
 
-    <!-- Video Grid Layout -->
-    <div class="video-grid">
-        <!-- Video grid items will be generated dynamically by JavaScript -->
-    </div>
-    <script src="script2.js"></script>
+    <!-- Container for displaying moves -->
+    <div id="move-list"></div>
+
+    <!-- Include Sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+    <!-- Include application JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
