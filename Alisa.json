@@ -2,10 +2,10 @@
     "character": "Alisa",
     "moves": [
       {
-        "input": "uf1",
-        "name": "Up Forward 1",
-        "hitRange": "mid",
-        "frames": 13,
+        "input": "11",
+        "name": "1,1",
+        "hitRange": "high,high",
+        "frames": 10,
         "block": -1,
         "hit": "+4",
         "properties": ["punishable", "sidestepRight", "extensionSingle"],
