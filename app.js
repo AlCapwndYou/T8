@@ -1,3 +1,9 @@
+let currentCharacter = 'Alisa'; // Default character
+const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
+'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
+'Kuma', 'Lars', 'Law', 'Lee', 'Lili', 'Nina', 'Panda','Paul', 'Raven',
+'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina']; // Character list
+
 // Define icon map for move properties
 const iconMap = {
     punishable: '👊',
@@ -16,11 +22,6 @@ const iconMap = {
     extensionSingle: '➡️',
     extensionMultiple: '🔀'
 };
-let currentCharacter = 'Alisa'; // Default character
-const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
-'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
-'Kuma', 'Lars', 'Law', 'Lee', 'Lili', 'Nina', 'Panda','Paul', 'Raven',
-'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina']; // Character list
 
 // Function to initialize the navigation menu
 function initializeCharacterNav() {
@@ -69,7 +70,6 @@ function initializeCharacterNav() {
     });
 }
 
-
 // Function to load character data from JSON file
 function loadCharacterData(character) {
     fetch(`${character}.json`) // Using exact character name
@@ -102,6 +102,9 @@ function renderMoves(moves, character) {
         const moveVideo = document.createElement('video');
         moveVideo.src = `media/${character}/${move.input}.mp4`; // Using exact character name
         moveVideo.controls = true;
+        moveVideo.muted = true; // Mutes the video
+        moveVideo.autoplay = true; // Auto-plays the video when loaded
+        moveVideo.loop = true; // Loops the video playback
         moveDiv.appendChild(moveVideo);
 
         const moveName = document.createElement('h3');
@@ -129,7 +132,7 @@ function renderMoves(moves, character) {
                 legendItem.classList.add('legend-item');
 
                 const iconSpan = document.createElement('span');
-                iconSpan.innerHTML = iconMap[property];
+                iconSpan.innerHTML = iconMap[property]; // Enable HTML content inside the iconSpan.
                 iconSpan.classList.add('icon-tooltip');
                 iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 
