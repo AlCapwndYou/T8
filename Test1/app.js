@@ -1,68 +1,57 @@
+// Define icon map for move properties
 const iconMap = {
-    SSL: '⬅️👟',
-    SSR: '➡️👟',
-    BLK: '✊',
-    HEAT: '🔥',
-    LAUNCHER: '⚠️',
-    KEY: '🔑',
-    DUCK: '🦆',
-    MIXUP: '🎰',
-    PLUS: '🛑',
-    PARRY: '⚔️',
-    SABAKI: '🔄',
-    EXT_SINGLE: '🔗',
-    EXT_MULTI: '🔍'
+    "SSL": "👟⬅️",
+    "SSR": "👟➡️",
+    "BLK": "🛡️", // Block Punish
+    "HEAT": "🔥", // Heat
+    "LAUNCHER": "⚠️", // Launcher
+    "KEY": "🔑", // Key Move
+    "DUCK": "🦆", // Duckable
+    "🎰": "🎰", // Mixup
+    "PLUS": "🛑", // Plus On Block
+    "PARRY": "⚔️", // Parryable
+    "SABAKI": "🔄", // Sabaki
+    "EXT_SINGLE": "➡️", // Extensions (single option)
+    "EXT_MULTIPLE": "🔄" // Extensions (multiple options)
 };
 
-let sortable;
-let allMoves = []; // Moves data will be populated here
-let currentCharacter = 'Alisa'; // Default character for example
-const characters = ['Alisa', 'Kazuya', 'Paul']; // Example list of characters
+let currentCharacter = 'Alisa'; // Default character
+const characters = ['Alisa', 'Bryan', 'Hwoarang']; // Example character list
 
-// Fetch and load moves for the selected character
+// Function to initialize the navigation menu
+function initializeCharacterNav() {
+    const nav = document.getElementById('character-nav');
+    characters.forEach(character => {
+        const characterItem = document.createElement('div');
+        characterItem.classList.add('character-item');
+        characterItem.textContent = character;
+
+        // Load character icon
+        const characterIcon = document.createElement('img');
+        characterIcon.classList.add('character-icon');
+        characterIcon.src = `media/${character.toLowerCase()}/${character.toLowerCase()}.webp`;
+        characterItem.appendChild(characterIcon);
+
+        characterItem.addEventListener('click', () => {
+            currentCharacter = character;
+            loadCharacterData(character);
+        });
+
+        nav.appendChild(characterItem);
+    });
+}
+
+// Function to load character data from JSON file
 function loadCharacterData(character) {
-    fetch(`${character}.json`)
+    fetch(`${character.toLowerCase()}.json`)
         .then(response => response.json())
         .then(data => {
-            allMoves = data.moves;
-            renderMoves(allMoves, character);
+            renderMoves(data.moves, character);
         })
         .catch(error => console.error('Error loading character data:', error));
 }
 
-function enableSorting() {
-    sortable = new Sortable(document.getElementById('move-list'), {
-        animation: 150,
-        onEnd: function () {
-            saveCustomPlaylist();
-        }
-    });
-}
-
-function saveCustomPlaylist() {
-    const moveItems = document.querySelectorAll('.move');
-    const playlist = Array.from(moveItems).map(item => item.dataset.move);
-    localStorage.setItem('customPlaylist', JSON.stringify(playlist));
-}
-
-function loadCustomPlaylist() {
-    const playlist = JSON.parse(localStorage.getItem('customPlaylist'));
-    if (playlist) {
-        const moveList = document.getElementById('move-list');
-        playlist.forEach(move => {
-            const moveItem = document.querySelector(`.move[data-move="${move}"]`);
-            if (moveItem) {
-                moveList.appendChild(moveItem);
-            }
-        });
-    }
-}
-
-function clearCustomPlaylist() {
-    localStorage.removeItem('customPlaylist');
-    renderMoves(allMoves, currentCharacter); // Reload the default moves
-}
-
+// Function to render moves in the grid
 function renderMoves(moves, character) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
@@ -70,10 +59,10 @@ function renderMoves(moves, character) {
     moves.forEach(move => {
         const moveDiv = document.createElement('div');
         moveDiv.classList.add('move');
-        moveDiv.dataset.move = move.input; // Set data attribute for sorting and playlist
+        moveDiv.dataset.move = move.input;
 
         const moveVideo = document.createElement('video');
-        moveVideo.src = `media/${character}/${move.input}.mp4`;
+        moveVideo.src = `media/${character.toLowerCase()}/${move.input}.mp4`;
         moveVideo.controls = true;
         moveDiv.appendChild(moveVideo);
 
@@ -87,6 +76,8 @@ function renderMoves(moves, character) {
         const isFavorited = localStorage.getItem(`${character}-${move.name}`);
         if (isFavorited) {
             favoriteIcon.classList.add('active');
+        } else {
+            favoriteIcon.classList.add('inactive');
         }
         favoriteIcon.addEventListener('click', () => toggleFavorite(character, move.name, favoriteIcon));
         moveDiv.appendChild(favoriteIcon);
@@ -102,7 +93,7 @@ function renderMoves(moves, character) {
                 const iconSpan = document.createElement('span');
                 iconSpan.textContent = iconMap[property];
                 iconSpan.classList.add('icon-tooltip');
-                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()); // Add tooltip text
+                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 
                 legendItem.appendChild(iconSpan);
                 legendDiv.appendChild(legendItem);
@@ -113,60 +104,72 @@ function renderMoves(moves, character) {
         moveList.appendChild(moveDiv);
     });
 
-    enableSorting(); // Enable sorting after moves are rendered
+    enableSorting(); // Initialize sortable functionality after rendering
     loadCustomPlaylist(); // Load custom playlist if exists
 }
 
-function toggleFavorite(character, moveName, iconElement) {
-    const key = `${character}-${moveName}`;
-    if (localStorage.getItem(key)) {
-        localStorage.removeItem(key);
-        iconElement.classList.remove('active');
+// Function to toggle favorite state
+function toggleFavorite(character, moveName, icon) {
+    const isFavorited = localStorage.getItem(`${character}-${moveName}`);
+    if (isFavorited) {
+        localStorage.removeItem(`${character}-${moveName}`);
+        icon.classList.remove('active');
+        icon.classList.add('inactive');
     } else {
-        localStorage.setItem(key, true);
-        iconElement.classList.add('active');
+        localStorage.setItem(`${character}-${moveName}`, 'true');
+        icon.classList.remove('inactive');
+        icon.classList.add('active');
     }
 }
 
-// Populate the navigation menu
-function populateNavigation() {
-    const nav = document.getElementById('character-nav');
-    nav.innerHTML = ''; // Clear existing content
-
-    characters.forEach(character => {
-        const characterItem = document.createElement('div');
-        characterItem.classList.add('character-item');
-        characterItem.dataset.character = character;
-        
-        const img = document.createElement('img');
-        img.src = `media/${character}.webp`; // Adjust to other formats if needed
-        img.alt = character;
-        img.classList.add('character-icon');
-        characterItem.appendChild(img);
-        
-        const name = document.createElement('span');
-        name.textContent = character;
-        characterItem.appendChild(name);
-        
-        characterItem.addEventListener('click', () => {
-            currentCharacter = character;
-            loadCharacterData(character); // Load data for the selected character
-        });
-
-        nav.appendChild(characterItem);
+// Function to enable sorting functionality
+function enableSorting() {
+    Sortable.create(document.getElementById('move-list'), {
+        animation: 150,
+        onEnd: function (evt) {
+            // Save the new order to custom playlist
+            saveCustomPlaylist();
+        }
     });
 }
 
-// Initialize the page
-function init() {
-    populateNavigation(); // Populate navigation menu
-    loadCharacterData(currentCharacter);
-
-    // Event listeners for playlist management
-    document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
-    document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
-    document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
+// Function to save custom playlist
+function saveCustomPlaylist() {
+    const moveList = document.getElementById('move-list');
+    const moves = Array.from(moveList.children).map(moveDiv => moveDiv.dataset.move);
+    localStorage.setItem('customPlaylist', JSON.stringify(moves));
 }
 
-// Call the init function when the page loads
-window.onload = init;
+// Function to load custom playlist
+function loadCustomPlaylist() {
+    const savedPlaylist = JSON.parse(localStorage.getItem('customPlaylist'));
+    if (savedPlaylist) {
+        const moveList = document.getElementById('move-list');
+        const moveDivs = Array.from(moveList.children);
+        const moveMap = moveDivs.reduce((map, div) => {
+            map[div.dataset.move] = div;
+            return map;
+        }, {});
+        moveList.innerHTML = '';
+        savedPlaylist.forEach(moveInput => {
+            if (moveMap[moveInput]) {
+                moveList.appendChild(moveMap[moveInput]);
+            }
+        });
+    }
+}
+
+// Function to clear custom playlist
+function clearCustomPlaylist() {
+    localStorage.removeItem('customPlaylist');
+    loadCharacterData(currentCharacter); // Reload character data to reflect changes
+}
+
+// Initialize the navigation menu and load default character data
+initializeCharacterNav();
+loadCharacterData(currentCharacter);
+
+// Event listeners for playlist controls
+document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
+document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
+document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
