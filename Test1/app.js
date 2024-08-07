@@ -1,82 +1,38 @@
-// Initialize Sortable.js
-let sortable;
-
-// Define the icon map for move properties
 const iconMap = {
-    punishable: '👊',
-    sidestepRight: '👟➡️',
-    sidestepLeft: '👟⬅️',
-    sidewalkRight: '🚶➡️',
-    sidewalkLeft: '🚶⬅️',
-    heat: '🔥',
-    launcher: '⚠️',
-    keyMove: '🔑',
-    duckable: '🦆',
-    mixup: '🎰',
-    plusOnBlock: '🛑',
-    parryable: '⚔️',
-    sabaki: '🔄',
-    extensionSingle: '➡️',
-    extensionMultiple: '🔀'
+    SSL: '⬅️👟',
+    SSR: '➡️👟',
+    BLK: '✊',
+    HEAT: '🔥',
+    LAUNCHER: '⚠️',
+    KEY: '🔑',
+    DUCK: '🦆',
+    MIXUP: '🎰',
+    PLUS: '🛑',
+    PARRY: '⚔️',
+    SABAKI: '🔄',
+    EXT_SINGLE: '🔗',
+    EXT_MULTI: '🔍'
 };
 
-// Possible image formats for character icons
-const imageFormats = ['webp', 'png', 'jpeg'];
+let sortable;
+let allMoves = []; // Moves data will be populated here
+let currentCharacter = 'Alisa'; // Default character for example
 
-// Function to load and display characters in the navigation bar
-function loadCharacters() {
-    const characterNav = document.getElementById('character-nav');
-    const characters = ['Alisa', 'Asuka', 'Law']; // Add more character names as needed
-
-    characters.forEach(character => {
-        const charLink = document.createElement('a');
-        charLink.href = "#";
-        charLink.dataset.character = character;
-
-        // Dynamically determine the correct image format for the character icon
-        const charImg = document.createElement('img');
-        charImg.src = getImagePath(character);
-        charImg.alt = character;
-
-        charLink.appendChild(charImg);
-        charLink.appendChild(document.createTextNode(character));
-        characterNav.appendChild(charLink);
-
-        charLink.addEventListener('click', () => loadCharacterMoves(character));
-    });
-}
-
-// Function to determine the correct image path for a character
-function getImagePath(character) {
-    for (let format of imageFormats) {
-        let imagePath = `media/${character}.${format}`;
-        if (imageExists(imagePath)) {
-            return imagePath;
-        }
-    }
-    // Fallback to a default image if none found
-    return `media/default-character-icon.png`;
-}
-
-// Helper function to check if an image exists
-function imageExists(path) {
-    const http = new XMLHttpRequest();
-    http.open('HEAD', path, false);
-    http.send();
-    return http.status !== 404;
-}
-
-function loadCharacterMoves(character) {
+// Fetch and load moves for the selected character
+function loadCharacterData(character) {
     fetch(`${character}.json`)
         .then(response => response.json())
-        .then(data => renderMoves(data.moves, character)) // Access the 'moves' array within the JSON
-        .catch(error => console.error('Error loading character JSON:', error));
+        .then(data => {
+            allMoves = data.moves;
+            renderMoves(allMoves, character);
+        })
+        .catch(error => console.error('Error loading character data:', error));
 }
 
 function enableSorting() {
     sortable = new Sortable(document.getElementById('move-list'), {
         animation: 150,
-        onEnd: function (evt) {
+        onEnd: function () {
             saveCustomPlaylist();
         }
     });
@@ -145,7 +101,7 @@ function renderMoves(moves, character) {
                 const iconSpan = document.createElement('span');
                 iconSpan.textContent = iconMap[property];
                 iconSpan.classList.add('icon-tooltip');
-                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()); // Add tooltip text
 
                 legendItem.appendChild(iconSpan);
                 legendDiv.appendChild(legendItem);
@@ -160,14 +116,6 @@ function renderMoves(moves, character) {
     loadCustomPlaylist(); // Load custom playlist if exists
 }
 
-// Call renderMoves function with your data to initialize the page
-renderMoves(allMoves, currentCharacter);
-
-// Playlist management functions
-document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
-document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
-document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
-
 function toggleFavorite(character, moveName, iconElement) {
     const key = `${character}-${moveName}`;
     if (localStorage.getItem(key)) {
@@ -179,27 +127,15 @@ function toggleFavorite(character, moveName, iconElement) {
     }
 }
 
-// Function to initialize the legend
-function initializeLegend() {
-    const legendContainer = document.getElementById('legend');
-    legendContainer.innerHTML = '';
+// Initialize the page
+function init() {
+    loadCharacterData(currentCharacter);
 
-    Object.keys(iconMap).forEach(key => {
-        const legendItem = document.createElement('div');
-        legendItem.classList.add('legend-item');
-
-        const iconSpan = document.createElement('span');
-        iconSpan.textContent = iconMap[key];
-
-        const textSpan = document.createElement('span');
-        textSpan.textContent = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-
-        legendItem.appendChild(iconSpan);
-        legendItem.appendChild(textSpan);
-        legendContainer.appendChild(legendItem);
-    });
+    // Event listeners for playlist management
+    document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
+    document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
+    document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
 }
 
-// Initialize the page
-loadCharacters();
-initializeLegend();
+// Call the init function when the page loads
+window.onload = init;
