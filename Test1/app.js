@@ -70,7 +70,6 @@ function loadCharacterMoves(character) {
         .catch(error => console.error('Error loading character JSON:', error));
 }
 
-// Function to render moves on the page
 function renderMoves(moves, character) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
@@ -93,7 +92,8 @@ function renderMoves(moves, character) {
         const favoriteIcon = document.createElement('span');
         favoriteIcon.classList.add('favorite');
         favoriteIcon.textContent = '❤️';
-        if (localStorage.getItem(`${character}-${move.name}`)) {
+        const isFavorited = localStorage.getItem(`${character}-${move.name}`);
+        if (isFavorited) {
             favoriteIcon.classList.add('active');
         }
         favoriteIcon.addEventListener('click', () => toggleFavorite(character, move.name, favoriteIcon));
@@ -123,7 +123,6 @@ function renderMoves(moves, character) {
     });
 }
 
-// Function to toggle favorite status
 function toggleFavorite(character, moveName, iconElement) {
     const key = `${character}-${moveName}`;
     if (localStorage.getItem(key)) {
