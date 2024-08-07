@@ -108,8 +108,8 @@ function renderMoves(moves, character) {
                 const legendItem = document.createElement('div');
                 legendItem.classList.add('legend-item');
 
-                // const iconSpan = document.createElement('span');
-                // iconSpan.textContent = iconMap[property];
+                 const iconSpan = document.createElement('span');
+                 iconSpan.textContent = iconMap[property];
 
                 // const textSpan = document.createElement('span');
                 // textSpan.textContent = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
