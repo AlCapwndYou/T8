@@ -22,7 +22,8 @@ body {
     font-family: "Timmana", sans-serif;
     font-weight: 400;
     font-style: normal;
-    -webkit-text-stroke: 1px black;
+    color:#ddd;
+    text-transform: uppercase;
     background:linear-gradient(0deg, rgb(0,0,0) 0%, rgb(49, 48, 48) 100%, rgba(0,0,0,0) 50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -40,7 +41,7 @@ body {
 .character-item:hover {
     background: linear-gradient(to right, rgb(160, 49, 123),rgb(91, 126, 150));
     color: rgb(190, 0, 110);
-    transition: color 0.3, transform 0.3s;
+    transition: all 1s, ease-out;
 }
 
 .character-icon {
