@@ -1,6 +1,6 @@
 $CSV = Import-Csv .\media\movelist.csv | Sort-Object -Property Character
 $Character = [PSCustomObject]@{
-    character = $null
+    character = ""
     moves = @()
 }
 $CharacterList = @()
@@ -9,20 +9,20 @@ $MoveArray = @()
 foreach ($x in $CSV) {
     
     $move = [PSCustomObject]@{
-        name = $null
-        input = $null
+        name = ""
+        input = ""
         dmg = @()
         hitranges = @()
-        hitsgrounded = $null
-        startupframes = $null
-        framesonblock = $null
-        framesonhit = $null
-        framesonctrhit = $null
-        transitionstance = $null
+        hitsgrounded = ""
+        startupframes = ""
+        framesonblock = ""
+        framesonhit = ""
+        framesonctrhit = ""
+        transitionstance = ""
         properties = @()
         extensions = @()
-        videofilename = $null
-        videourl = $null
+        videofilename = ""
+        videourl = ""
     }
 
     if ($CharacterList -contains $x.Character) {
@@ -40,8 +40,8 @@ foreach ($x in $CSV) {
         if ($null -eq $Character.character){
             Write-Host "First character..."
             $CharacterList += $x.Character
-            $JSONFileName = "$($x.Character).json"
-            Out-File $JSONFileName -Force
+            #$JSONFileName = "$($x.Character).json"
+            #Out-File $JSONFileName -Force
         }
         elseif ($Character.character -ne $x.Character){
             Write-Host "New character..."
