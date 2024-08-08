@@ -27,12 +27,6 @@ let filterPreference = 'all'; // Default filter preference
 let isAutoPlayEnabled = true; // Default auto-play state
 let isSortableEnabled = true; // Default sortable state
 
-// Event listener for the filter menu
-document.getElementById('filter-menu').addEventListener('change', function() {
-    const selectedFilter = this.value;
-    filterMoves(selectedFilter);
-});
-
 // Function to filter and render moves based on the selected property
 function filterMoves(property) {
     fetch(`${currentCharacter}.json`)
