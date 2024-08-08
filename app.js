@@ -196,15 +196,26 @@ function toggleFavorite(character, moveName, icon) {
     }
 }
 
+
+let sortableInstance = null; // Keep track of the sortable instance
+
 // Function to enable sorting functionality
 function enableSorting() {
+    const moveList = document.getElementById('move-list');
     if (isSortableEnabled) {
-        Sortable.create(document.getElementById('move-list'), {
-            animation: 150,
-            onEnd: function (evt) {
-                saveCustomPlaylist(); // Save the new order to custom playlist
-            }
-        });
+        if (!sortableInstance) {
+            sortableInstance = Sortable.create(moveList, {
+                animation: 150,
+                onEnd: function (evt) {
+                    saveCustomPlaylist(); // Save the new order to custom playlist
+                }
+            });
+        }
+    } else {
+        if (sortableInstance) {
+            sortableInstance.destroy(); // Destroy the sortable instance
+            sortableInstance = null; // Reset the instance
+        }
     }
 }
 
