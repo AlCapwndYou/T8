@@ -132,7 +132,7 @@ function renderMoves(moves, character) {
 
         
         const moveVideo = document.createElement('video');
-        moveVideo.src = `https://drive.google.com/drive/folders/1YZmOP2-SluHOIodfIaGZXpdgZdMK7xlW?usp=sharing/${character}/${move.input}.mp4`;
+        moveVideo.src = move.videourl;
         moveVideo.controls = true;
         moveVideo.muted = true;
         if (isAutoPlayEnabled) {
