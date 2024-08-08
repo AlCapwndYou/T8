@@ -49,7 +49,7 @@ foreach ($x in $CSV) {
             Write-Host "saving previous..."
             $Character.character
             $Character.moves = $MoveArray
-            $Character | ConvertTo-Json | Out-File "$($Character.character).json" -Append
+            $Character | ConvertTo-Json | Out-File "$($Character.character).json" -Append -Encoding ascii
             $MoveArray = @()
             $CharacterList += $x.Character
         }
