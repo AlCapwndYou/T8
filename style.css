@@ -42,6 +42,7 @@ body {
 .character-item:hover {
     background: linear-gradient(to right, rgb(160, 49, 123),rgb(91, 126, 150));
     color: rgb(190, 0, 110);
+    -webkit-text-stroke: 1px, black;
     transition: color 1s;
 }
 
