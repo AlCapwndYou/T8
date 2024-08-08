@@ -24,7 +24,7 @@ body {
     font-style: normal;
     color:#ddd;
     text-transform: uppercase;
-    background:linear-gradient(0deg, rgb(0,0,0) 0%, rgb(49, 48, 48) 100%, rgba(0,0,0,0) 50%);
+    background:linear-gradient(0deg, rgb(0,0,0) 0%, rgb(60, 52, 52) 100%, rgba(0,0,0,0) 50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -36,12 +36,13 @@ body {
     bottom:0;
     clip-path: polygon(10% 0%, 100% 0%, 100% 20%, 100% 90%, 90% 100%, 20% 100%, 0% 100%, 0% 10%);
     transition: background 0.3s, transform 0.3s;
+    transition: color 1s;
 }
 
 .character-item:hover {
     background: linear-gradient(to right, rgb(160, 49, 123),rgb(91, 126, 150));
     color: rgb(190, 0, 110);
-    transition: all 1s, ease-out;
+    transition: color 1s;
 }
 
 .character-icon {
