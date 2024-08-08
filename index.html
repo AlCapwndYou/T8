@@ -13,6 +13,19 @@
     <!-- Navigation bar for selecting characters -->
     <div id="character-nav"></div>
 
+    <!-- Auto-Play and Grid Lock toggle options -->
+    <div id="controls">
+        <label>
+            <input type="checkbox" id="autoplay-toggle" checked>
+            Auto-play Videos
+        </label>
+        <label>
+            <input type="checkbox" id="sortable-toggle" checked>
+            Enable Move Grid
+        </label>
+    </div>
+    
+
     <!-- Playlist controls -->
     <div id="playlist-controls">
         <button id="save-playlist">Save Playlist</button>
@@ -20,17 +33,12 @@
         <button id="clear-playlist">Clear Playlist</button>
     </div>
 
-    <select id="filter-menu">
-        <option value="all">All Moves</option>
-        <option value="punishable">Punishable</option>
-        <option value="sidestepRight">Sidestep Right</option>
-        <option value="sidestepLeft">Sidestep Left</option>
-        <option value="sidewalkRight">Sidewalk Right</option>
-        <option value="sidewalkLeft">Sidewalk Left</option>
-        <!-- Add more options as needed -->
+    <select id="filter-select">
+        <option value="all">Show All</option>
+        <option value="favorites">Show Favorites</option>
+        <!-- Add other filtering options dynamically -->
     </select>
     
-
     <!-- Container for displaying moves -->
     <div id="move-list"></div>
 

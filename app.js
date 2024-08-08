@@ -23,6 +23,10 @@ const iconMap = {
     extensionMultiple: '🔀'
 };
 
+let filterPreference = 'all'; // Default filter preference
+let isAutoPlayEnabled = true; // Default auto-play state
+let isSortableEnabled = true; // Default sortable state
+
 // Event listener for the filter menu
 document.getElementById('filter-menu').addEventListener('change', function() {
     const selectedFilter = this.value;
@@ -116,17 +120,30 @@ function renderMoves(moves, character) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
 
-    moves.forEach(move => {
+    // Filter moves based on the selected filter option
+    const filteredMoves = moves.filter(move => {
+        if (filterPreference === 'favorites') {
+            return localStorage.getItem(`${character}-${move.name}`);
+        } else if (filterPreference !== 'all') {
+            return move.properties.includes(filterPreference);
+        } else {
+            return true; // Show all moves
+        }
+    });
+
+    filteredMoves.forEach(move => {
         const moveDiv = document.createElement('div');
         moveDiv.classList.add('move');
         moveDiv.dataset.move = move.input;
 
         const moveVideo = document.createElement('video');
-        moveVideo.src = `media/${character}/${move.input}.mp4`; // Using exact character name
+        moveVideo.src = `media/${character}/${move.input}.mp4`;
         moveVideo.controls = true;
-        moveVideo.muted = true; // Mutes the video
-        moveVideo.autoplay = true; // Auto-plays the video when loaded
-        moveVideo.loop = true; // Loops the video playback
+        moveVideo.muted = true;
+        if (isAutoPlayEnabled) {
+            moveVideo.autoplay = true;
+        }
+        moveVideo.loop = true;
         moveDiv.appendChild(moveVideo);
 
         const moveName = document.createElement('h3');
@@ -154,7 +171,7 @@ function renderMoves(moves, character) {
                 legendItem.classList.add('legend-item');
 
                 const iconSpan = document.createElement('span');
-                iconSpan.innerHTML = iconMap[property]; // Enable HTML content inside the iconSpan.
+                iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
                 iconSpan.classList.add('icon-tooltip');
                 iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 
@@ -187,13 +204,14 @@ function toggleFavorite(character, moveName, icon) {
 
 // Function to enable sorting functionality
 function enableSorting() {
-    Sortable.create(document.getElementById('move-list'), {
-        animation: 150,
-        onEnd: function (evt) {
-            // Save the new order to custom playlist
-            saveCustomPlaylist();
-        }
-    });
+    if (isSortableEnabled) {
+        Sortable.create(document.getElementById('move-list'), {
+            animation: 150,
+            onEnd: function (evt) {
+                saveCustomPlaylist(); // Save the new order to custom playlist
+            }
+        });
+    }
 }
 
 // Function to save custom playlist
@@ -228,11 +246,46 @@ function clearCustomPlaylist() {
     loadCharacterData(currentCharacter); // Reload character data to reflect changes
 }
 
+// Function to toggle auto-play state
+function toggleAutoPlay() {
+    isAutoPlayEnabled = !isAutoPlayEnabled;
+    loadCharacterData(currentCharacter); // Re-load the data to apply changes
+}
+
+// Function to toggle sortable state
+function toggleSortable() {
+    isSortableEnabled = !isSortableEnabled;
+    loadCharacterData(currentCharacter); // Re-load the data to apply changes
+}
+
+// Populate filter dropdown based on iconMap keys
+function populateFilterOptions() {
+    const filterSelect = document.getElementById('filter-select');
+    for (const property in iconMap) {
+        const option = document.createElement('option');
+        option.value = property;
+        option.textContent = `Show ${property}`;
+        filterSelect.appendChild(option);
+    }
+}
+
+populateFilterOptions();
+
 // Initialize the navigation menu and load default character data
 initializeCharacterNav();
 loadCharacterData(currentCharacter);
+
+// Event listeners for filter controls
+document.getElementById('filter-select').addEventListener('change', function() {
+    filterPreference = this.value;
+    loadCharacterData(currentCharacter);
+});
 
 // Event listeners for playlist controls
 document.getElementById('save-playlist').addEventListener('click', saveCustomPlaylist);
 document.getElementById('load-playlist').addEventListener('click', loadCustomPlaylist);
 document.getElementById('clear-playlist').addEventListener('click', clearCustomPlaylist);
+
+// Event listeners for auto-play and sortable toggles
+document.getElementById('toggle-autoplay').addEventListener('click', toggleAutoPlay);
+document.getElementById('toggle-sortable').addEventListener('click', toggleSortable);
