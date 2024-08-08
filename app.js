@@ -130,8 +130,9 @@ function renderMoves(moves, character) {
         moveDiv.classList.add('move');
         moveDiv.dataset.move = move.input;
 
+        
         const moveVideo = document.createElement('video');
-        moveVideo.src = `media/${character}/${move.input}.mp4`;
+        moveVideo.src = `https://drive.google.com/drive/folders/1YZmOP2-SluHOIodfIaGZXpdgZdMK7xlW?usp=sharing/${character}/${move.input}.mp4`;
         moveVideo.controls = true;
         moveVideo.muted = true;
         if (isAutoPlayEnabled) {
