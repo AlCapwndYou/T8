@@ -132,7 +132,7 @@ function renderMoves(moves, character) {
 
         
         const moveVideo = document.createElement('video');
-        moveVideo.src = `/media/${character}/${move}.mp4`;
+        moveVideo.src = `media/${character}/${move.input}.mp4`;
         moveVideo.controls = true;
         moveVideo.muted = true;
         if (isAutoPlayEnabled) {
