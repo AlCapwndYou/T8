@@ -26,7 +26,6 @@ const iconMap = {
     extensionMultiple: '🔀'
 };
 
-// Function to load character data from JSON and apply filtering, pagination, and rendering
 function loadCharacterData(character) {
     fetch(`json/${character}.json`)
         .then(response => response.json())
@@ -40,7 +39,6 @@ function loadCharacterData(character) {
         });
 }
 
-// Function to filter moves based on the filter preference
 function filterMoves(moves) {
     return moves.filter(move => 
         filterPreference === 'favorites' ? localStorage.getItem(`${currentCharacter}-${move.name}`) :
@@ -49,7 +47,6 @@ function filterMoves(moves) {
     );
 }
 
-// Function to render the moves on the grid with pagination
 function renderMoves(moves) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
@@ -104,11 +101,10 @@ function renderMoves(moves) {
 
     document.getElementById('current-page').textContent = currentPage;
     document.getElementById('total-pages').textContent = Math.ceil(moves.length / totalItems);
-    enableSorting(); 
+    enableSorting();
     loadCustomPlaylist();
 }
 
-// Function to toggle favorite state
 function toggleFavorite(moveName, icon) {
     const key = `${currentCharacter}-${moveName}`;
     if (localStorage.getItem(key)) {
@@ -120,7 +116,6 @@ function toggleFavorite(moveName, icon) {
     }
 }
 
-// Function to initialize character navigation
 function initializeCharacterNav() {
     const nav = document.getElementById('character-nav');
     characters.forEach(character => {
@@ -141,7 +136,6 @@ function initializeCharacterNav() {
     });
 }
 
-// Function to load character icon
 function loadCharacterIcon(character, iconElement) {
     const formats = ['webp', 'png', 'jpeg'];
     function tryLoadImage(index = 0) {
@@ -159,7 +153,6 @@ function loadCharacterIcon(character, iconElement) {
     tryLoadImage();
 }
 
-// Function to enable sorting functionality
 let sortableInstance = null;
 function enableSorting() {
     const moveList = document.getElementById('move-list');
@@ -178,7 +171,6 @@ function enableSorting() {
     }
 }
 
-// Function to save and load custom playlists
 function saveCustomPlaylist() {
     const moveList = document.getElementById('move-list');
     const moves = Array.from(moveList.children).map(moveDiv => moveDiv.dataset.move);
@@ -203,13 +195,11 @@ function loadCustomPlaylist() {
     }
 }
 
-// Function to clear custom playlist
 function clearCustomPlaylist() {
     localStorage.removeItem('customPlaylist');
     loadCharacterData(currentCharacter);
 }
 
-// Setup pagination controls
 function setupPaginationControls() {
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 1) {
@@ -226,7 +216,6 @@ function setupPaginationControls() {
     });
 }
 
-// Setup grid settings
 function setupGridSettings() {
     document.getElementById('apply-grid-settings').addEventListener('click', () => {
         rows = parseInt(document.getElementById('rows').value, 10);
@@ -236,7 +225,6 @@ function setupGridSettings() {
     });
 }
 
-// Populate filter dropdown based on iconMap keys
 function populateFilterOptions() {
     const filterSelect = document.getElementById('filter-select');
     for (const property in iconMap) {
@@ -246,30 +234,23 @@ function populateFilterOptions() {
         filterSelect.appendChild(option);
     }
 }
-// Toggle autoplay state
+
 function toggleAutoPlay() {
-    isAutoPlayEnabled = !isAutoPlayEnabled;
-    loadCharacterData();
+    isAutoPlayEnabled = document.getElementById('toggle-autoplay').checked;
+    loadCharacterData(currentCharacter);
 }
 
-// Toggle sortable state
 function toggleSortable() {
-    isSortableEnabled = !isSortableEnabled;
+    isSortableEnabled = document.getElementById('toggle-sortable').checked;
     enableSorting();
 }
 
-// Clear custom playlist
-function clearCustomPlaylist() {
-    localStorage.removeItem('customPlaylist');
-    loadCharacterData();
-}
-
-// Initialize the page
 function initializePage() {
     initializeCharacterNav();
-    setupControls();
-    loadCharacterData();
+    setupPaginationControls();
+    setupGridSettings();
+    populateFilterOptions();
+    loadCharacterData(currentCharacter);
 }
 
-// Call initializePage when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializePage);
