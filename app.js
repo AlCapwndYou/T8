@@ -92,7 +92,7 @@ function initializeCharacterNav() {
 
 // Function to load character data from JSON file
 function loadCharacterData(character) {
-    fetch(`${character}.json`) // Using exact character name
+    fetch(`json/${character}.json`) // Using exact character name
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
