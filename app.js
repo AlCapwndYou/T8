@@ -1,7 +1,7 @@
 let currentCharacter = 'Alisa'; // Default character
 const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov',
 'Eddy', 'Feng','Heihachi', 'Hwoarang', 'Jin', 'Jack-8', 'Kazuya', 'King',
-'Kuma', 'Lars', 'Law', 'Lee', 'Lili', 'Nina', 'Panda','Paul',
+'Kuma', 'Lars', 'Law', 'Lee', 'Lidia', 'Lili', 'Nina', 'Panda','Paul',
 'Raven', 'Reina', 'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina']; // Character list
 
 // Define icon map for move properties
