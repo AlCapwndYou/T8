@@ -130,7 +130,6 @@ function renderMoves(moves, character) {
         moveDiv.classList.add('move');
         moveDiv.dataset.move = move.input;
 
-        
         const moveVideo = document.createElement('video');
         moveVideo.src = `media/${character}/${move.input}.mp4`;
         moveVideo.controls = true;
