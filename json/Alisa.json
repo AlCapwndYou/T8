@@ -4,27 +4,27 @@
       {
         "input": "11",
         "name": "1,1",
-        "hitRange": "high,high",
+        "target": ["h","h"],
         "frames": 10,
-        "block": -1,
-        "hit": "+4",
-        "properties": ["punishable", "sidestepRight", "extensionSingle"],
-        "extensions": ["uf1,2"]
+        "block": -3,
+        "hit": "+5",
+        "properties": ["Duckable", "HighLowOnlyString"],
+        "extensions": []
       },
       {
-        "input": "f1+2",
-        "name": "Mach Breaker",
-        "hitRange": "mid",
+        "input": "12d2",
+        "name": "1,2,d2",
+        "target": ["h","h","l"],
         "frames": 18,
-        "block": -12,
+        "block": -11,
         "hit": "KND",
-        "properties": ["launcher", "heat"],
+        "properties": ["Duckable","BlockPunishable", "HighLowOnlyString"],
         "extensions": []
       },
       {
         "input": "uf3",
         "name": "Hop Kick",
-        "hitRange": "mid",
+        "target": "mid",
         "frames": 15,
         "block": -13,
         "hit": "launch",
@@ -34,7 +34,7 @@
       {
         "input": "b1",
         "name": "Back 1",
-        "hitRange": "high",
+        "target": "high",
         "frames": 10,
         "block": -1,
         "hit": "+3",
@@ -44,7 +44,7 @@
       {
         "input": "ws4",
         "name": "While Standing 4",
-        "hitRange": "mid",
+        "target": "mid",
         "frames": 11,
         "block": -5,
         "hit": "+6",

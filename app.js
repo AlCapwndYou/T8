@@ -11,21 +11,22 @@ const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin'
 
 // Define icon map for move properties
 const iconMap = {
-    punishable: '👊',
-    sidestepRight: '👟➡️',
-    sidestepLeft: '👟⬅️',
-    sidewalkRight: '🚶➡️',
-    sidewalkLeft: '🚶⬅️',
-    heat: '<img src="media/heat4-small.png" alt="Heat" width="32" height="32">',
-    launcher: '⚠️',
-    keyMove: '🔑',
-    duckable: '🦆',
-    mixup: '🎰',
-    plusOnBlock: '🛑',
-    parryable: '⚔️',
-    sabaki: '🔄',
-    extensionSingle: '➡️',
-    extensionMultiple: '🔀'
+    BlockPunishable: '👊',
+    SSL: '👟➡️',
+    SSR: '👟⬅️',
+    SWR: '🚶➡️',
+    SWL: '🚶⬅️',
+    Heat: '<img src="media/heat4-small.png" alt="Heat" width="32" height="32">',
+    Launcher: '⚠️',
+    KeyMove: '🔑',
+    Duckable: '🦆',
+    Mixup: '🎰',
+    PlusOnBlock: '🛑',
+    Parryable: '⚔️',
+    Sabaki: '🔄',
+    Interuptable: 'f',
+    SingleOptionString: '➡️',
+    HighLowOnlyString: '🔀'
 };
 
 // Function to filter and render moves based on the selected property
