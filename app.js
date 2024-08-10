@@ -6,7 +6,7 @@ let isSortableEnabled = false; // Default sortable state
 let currentCharacter = 'Alisa'; // Default character
 const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin', 'Dragunov', 'Eddy',
     'Feng', 'Heihachi', 'Hwoarang', 'Jack-8', 'Jin', 'Jun', 'Kazuya', 'King',
-    'Kuma', 'Lars', 'Law', 'Lee', 'Leo', 'Lidia', 'Lili', 'Nina', 'Panda', 'Paul',
+    'Kuma', 'Lars', 'Law', 'Lee', 'Leo', 'Leroy', 'Lidia', 'Lili', 'Nina', 'Panda', 'Paul',
     'Raven', 'Reina', 'Shaheen', 'Steve', 'Victor','Xiaoyu', 'Yoshimitsu', 'Zafina'];
 
 // Define icon map for move properties
