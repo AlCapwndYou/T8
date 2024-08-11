@@ -140,16 +140,16 @@ foreach ($dir in $CharacterDirs) {
         $move = [PSCustomObject]@{
             name = "$($i.BaseName)"
             input = "$($i.BaseName)"
-            dmg = "[]"
-            hitranges = "[]"
+            dmg = @()
+            hitranges = @()
             hitsgrounded = ""
             startupframes = ""
             framesonblock = ""
             framesonhit = ""
             framesonctrhit = ""
             transitionstance = ""
-            properties = "[]"
-            extensions = "[]"
+            properties = @()
+            extensions = @()
             videofilename = ""
         }
         $MoveArray += $move
