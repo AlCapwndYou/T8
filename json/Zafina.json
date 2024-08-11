@@ -1,9 +1,9 @@
 {
-    "character":  "Claudio",
+    "character":  "Zafina",
     "moves":  [
                   {
-                      "name":  "1+2",
-                      "input":  "1+2",
+                      "name":  "1+2 44",
+                      "input":  "1+2 44",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -17,8 +17,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "10 hit",
-                      "input":  "10 hit",
+                      "name":  "10 hit 1",
+                      "input":  "10 hit 1",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -32,8 +32,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "13",
-                      "input":  "13",
+                      "name":  "10 hit 2",
+                      "input":  "10 hit 2",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -47,8 +47,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "212",
-                      "input":  "212",
+                      "name":  "123",
+                      "input":  "123",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -62,8 +62,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "3+4",
-                      "input":  "3+4",
+                      "name":  "213",
+                      "input":  "213",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -77,8 +77,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "32",
-                      "input":  "32",
+                      "name":  "221+2",
+                      "input":  "221+2",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -92,23 +92,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "43",
-                      "input":  "43",
-                      "dmg":  "[]",
-                      "hitranges":  "[]",
-                      "hitsgrounded":  "",
-                      "startupframes":  "",
-                      "framesonblock":  "",
-                      "framesonhit":  "",
-                      "framesonctrhit":  "",
-                      "transitionstance":  "",
-                      "properties":  "[]",
-                      "extensions":  "[]",
-                      "videofilename":  ""
-                  },
-                  {
-                      "name":  "b1+2",
-                      "input":  "b1+2",
+                      "name":  "b1",
+                      "input":  "b1",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -137,68 +122,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "b3+4",
-                      "input":  "b3+4",
-                      "dmg":  "[]",
-                      "hitranges":  "[]",
-                      "hitsgrounded":  "",
-                      "startupframes":  "",
-                      "framesonblock":  "",
-                      "framesonhit":  "",
-                      "framesonctrhit":  "",
-                      "transitionstance":  "",
-                      "properties":  "[]",
-                      "extensions":  "[]",
-                      "videofilename":  ""
-                  },
-                  {
-                      "name":  "b3n3",
-                      "input":  "b3n3",
-                      "dmg":  "[]",
-                      "hitranges":  "[]",
-                      "hitsgrounded":  "",
-                      "startupframes":  "",
-                      "framesonblock":  "",
-                      "framesonhit":  "",
-                      "framesonctrhit":  "",
-                      "transitionstance":  "",
-                      "properties":  "[]",
-                      "extensions":  "[]",
-                      "videofilename":  ""
-                  },
-                  {
-                      "name":  "b41",
-                      "input":  "b41",
-                      "dmg":  "[]",
-                      "hitranges":  "[]",
-                      "hitsgrounded":  "",
-                      "startupframes":  "",
-                      "framesonblock":  "",
-                      "framesonhit":  "",
-                      "framesonctrhit":  "",
-                      "transitionstance":  "",
-                      "properties":  "[]",
-                      "extensions":  "[]",
-                      "videofilename":  ""
-                  },
-                  {
-                      "name":  "b42",
-                      "input":  "b42",
-                      "dmg":  "[]",
-                      "hitranges":  "[]",
-                      "hitsgrounded":  "",
-                      "startupframes":  "",
-                      "framesonblock":  "",
-                      "framesonhit":  "",
-                      "framesonctrhit":  "",
-                      "transitionstance":  "",
-                      "properties":  "[]",
-                      "extensions":  "[]",
-                      "videofilename":  ""
-                  },
-                  {
-                      "name":  "b432",
-                      "input":  "b432",
+                      "name":  "b3",
+                      "input":  "b3",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -227,8 +152,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "d1+2",
-                      "input":  "d1+2",
+                      "name":  "d243",
+                      "input":  "d243",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -242,8 +167,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "d12",
-                      "input":  "d12",
+                      "name":  "d3",
+                      "input":  "d3",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -257,8 +182,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "d22",
-                      "input":  "d22",
+                      "name":  "d43",
+                      "input":  "d43",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -272,8 +197,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "db1+2",
-                      "input":  "db1+2",
+                      "name":  "db1+2 1+2",
+                      "input":  "db1+2 1+2",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -287,8 +212,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "db3",
-                      "input":  "db3",
+                      "name":  "db42",
+                      "input":  "db42",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -302,8 +227,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "db43",
-                      "input":  "db43",
+                      "name":  "df121",
+                      "input":  "df121",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -317,8 +242,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "df12",
-                      "input":  "df12",
+                      "name":  "df14",
+                      "input":  "df14",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -347,8 +272,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "df31",
-                      "input":  "df31",
+                      "name":  "df34",
+                      "input":  "df34",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -362,8 +287,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "df32",
-                      "input":  "df32",
+                      "name":  "df3d4",
+                      "input":  "df3d4",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -377,8 +302,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "f1+2 1+2",
-                      "input":  "f1+2 1+2",
+                      "name":  "df41",
+                      "input":  "df41",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -392,8 +317,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "f2 1+2",
-                      "input":  "f2 1+2",
+                      "name":  "df42",
+                      "input":  "df42",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -407,8 +332,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "f22",
-                      "input":  "f22",
+                      "name":  "f234",
+                      "input":  "f234",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -422,8 +347,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "ff21+2",
-                      "input":  "ff21+2",
+                      "name":  "fc df3",
+                      "input":  "fc df3",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -437,8 +362,23 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "ff22",
-                      "input":  "ff22",
+                      "name":  "ff3+4",
+                      "input":  "ff3+4",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "ff31",
+                      "input":  "ff31",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -467,8 +407,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "ss4",
-                      "input":  "ss4",
+                      "name":  "mnt 214",
+                      "input":  "mnt 214",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -482,8 +422,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "starburst 42",
-                      "input":  "starburst 42",
+                      "name":  "mnt d14",
+                      "input":  "mnt d14",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -497,8 +437,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "starburst d12",
-                      "input":  "starburst d12",
+                      "name":  "mnt d4",
+                      "input":  "mnt d4",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -512,8 +452,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "starburst ws12",
-                      "input":  "starburst ws12",
+                      "name":  "mnt df3",
+                      "input":  "mnt df3",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -527,8 +467,248 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "uf3+4",
-                      "input":  "uf3+4",
+                      "name":  "mnt1+2",
+                      "input":  "mnt1+2",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "mnt31",
+                      "input":  "mnt31",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "mnt43",
+                      "input":  "mnt43",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr b1+2",
+                      "input":  "scr b1+2",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr d33",
+                      "input":  "scr d33",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr d4",
+                      "input":  "scr d4",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr df33",
+                      "input":  "scr df33",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr df4",
+                      "input":  "scr df4",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr heat smash",
+                      "input":  "scr heat smash",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr22",
+                      "input":  "scr22",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr3+4",
+                      "input":  "scr3+4",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr33",
+                      "input":  "scr33",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "scr4",
+                      "input":  "scr4",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "trt d1+2",
+                      "input":  "trt d1+2",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "trt1+2",
+                      "input":  "trt1+2",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "trt1",
+                      "input":  "trt1",
+                      "dmg":  "[]",
+                      "hitranges":  "[]",
+                      "hitsgrounded":  "",
+                      "startupframes":  "",
+                      "framesonblock":  "",
+                      "framesonhit":  "",
+                      "framesonctrhit":  "",
+                      "transitionstance":  "",
+                      "properties":  "[]",
+                      "extensions":  "[]",
+                      "videofilename":  ""
+                  },
+                  {
+                      "name":  "trt43",
+                      "input":  "trt43",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -557,8 +737,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "ws11",
-                      "input":  "ws11",
+                      "name":  "ws12",
+                      "input":  "ws12",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
@@ -572,8 +752,8 @@
                       "videofilename":  ""
                   },
                   {
-                      "name":  "ws12",
-                      "input":  "ws12",
+                      "name":  "ws2",
+                      "input":  "ws2",
                       "dmg":  "[]",
                       "hitranges":  "[]",
                       "hitsgrounded":  "",
