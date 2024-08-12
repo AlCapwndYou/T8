@@ -30,10 +30,13 @@ function Get-MoveDataFromWavuWiki {
             $mvinputs = $idNode.InnerText.Trim()
             $mvinputs = $mvinputs -replace '#', ''
             $mvinputs = $mvinputs -replace "$($Character.character)-", ''
-            $mvinputs = $mvinputs -replace '^f\+21', 'f'
-            $mvinputs = $mvinputs -replace "u+", 'u'
-            $mvinputs = $mvinputs -replace "d+", 'd'
-            $mvinputs = $mvinputs -replace "b+", 'b'
+            if ($mvinputs -match "\+.*\+") {
+                Write-Host "Replacing character..."
+                $mvinputs = $mvinputs -replace "\+([^+]*\+)", '$1'
+            } else {
+                Write-Host "Only one +"
+                $mvinputs = $mvinputs
+            }
             $mvinputs = $mvinputs -replace ',', ''
             $movedata["id"] = $mvinputs
         }
@@ -135,12 +138,65 @@ foreach ($dir in $CharacterDirs) {
     $Character.character = $dir.Name
     $MoveArray = @()
     $MoveVideos = Get-ChildItem $dir.PSPath -Filter *.mp4
-    Get-MoveDataFromWavuWiki
+    #Get-MoveDataFromWavuWiki
     foreach ($i in $MoveVideos) {
-        $move = [PSCustomObject]@{
+$MoveText = @"
+    {
+        "name": "$($i.BaseName)",
+        "input": "$($i.BaseName)",
+        "wavuname": "",
+        "dmg": [],
+        "hitranges": [],
+        "hitsgrounded": "",
+        "startupframes": "",
+        "framesonblock" : "",
+        "framesonhit": "",
+        "framesonctrhit": "",
+        "transitionstance": "",
+        "BlockPunishable": "",
+        "SSR": "",
+        "SSL": "",
+        "SWR": "",
+        "SWL": "",
+        "Heat": "",
+        "Launcher": "",
+        "KeyMove": "",
+        "Duckable": "",
+        "Mixup": "",
+        "PlusOnBlock": "",
+        "Parryable": "",
+        "Sabaki": "",
+        "Interuptable": "",
+        "SingleOptionString": "",
+        "HighLowOnlyString": "",
+        "properties": [],
+        "extensions": [],
+        "videofilename": ""
+    },
+
+"@
+
+    $MoveArray += $MoveText
+    }
+    Write-Host "Creating $($dir.name)"
+    $MoveArray[-1] = $MoveArray[-1] -replace ('},','}')
+    $CharacterTextBlock = @"
+{
+    "character": "$dir",
+    "moves": [
+    $MoveArray
+    ]
+}
+"@
+    $CharacterTextBlock | Out-File "C:\Temp\$($Character.character).json" -Encoding ascii
+}
+
+<#
+         $move = [PSCustomObject]@{
             name = "$($i.BaseName)"
             input = "$($i.BaseName)"
-            dmg = @()
+            wavuname = ""
+            dmg = @() | ConvertTo-Json
             hitranges = @()
             hitsgrounded = ""
             startupframes = ""
@@ -148,12 +204,24 @@ foreach ($dir in $CharacterDirs) {
             framesonhit = ""
             framesonctrhit = ""
             transitionstance = ""
-            properties = @()
+            BlockPunishable = ""
+            SSR = ""
+            SSL = ""
+            SWR = ""
+            SWL = ""
+            Heat = ""
+            Launcher = ""
+            KeyMove = ""
+            Duckable = ""
+            Mixup = ""
+            PlusOnBlock = ""
+            Parryable = ""
+            Sabaki = ""
+            Interuptable  = ""
+            SingleOptionString = ""
+            HighLowOnlyString = ""
+            properties = '[]'
             extensions = @()
             videofilename = ""
         }
-        $MoveArray += $move
-    }
-    $Character.moves = $MoveArray
-    $Character | ConvertTo-Json | Out-File "C:\Temp\$($Character.character).json" -Encoding ascii
-}
+#>
