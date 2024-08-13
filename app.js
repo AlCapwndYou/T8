@@ -31,12 +31,14 @@ const iconMap = {
 
 // Function to filter and render moves based on the selected property
 function filterMoves(property) {
-    fetch(`${currentCharacter}.json`)
+    fetch(`json/${currentCharacter}.json`)
         .then(response => response.json())
         .then(data => {
             let filteredMoves;
             if (property === 'all') {
                 filteredMoves = data.moves;
+            } else if (property === 'favorites') {
+                filteredMoves = data.moves.filter(move => localStorage.getItem(`${currentCharacter}-${move.name}`));
             } else {
                 filteredMoves = data.moves.filter(move => move.properties.includes(property));
             }
