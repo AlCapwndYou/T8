@@ -24,7 +24,7 @@ const iconMap = {
     PlusOnBlock: '🛑',
     Parryable: '⚔️',
     Sabaki: '🔄',
-    Interuptable: 'f',
+    Interuptable: '<IconHere>',
     SingleOptionString: '➡️',
     HighLowOnlyString: '🔀'
 };
@@ -164,7 +164,7 @@ function renderMoves(moves, character) {
         Object.keys(iconMap).forEach(property => {
             const propertyValue = move[property];
         
-            if (propertyValue === null) {
+            if (propertyValue === null || propertyValue === '') {
                 // Do not display the icon or value if null
                 return;
             }
