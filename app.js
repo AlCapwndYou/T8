@@ -161,30 +161,40 @@ function renderMoves(moves, character) {
         const legendDiv = document.createElement('div');
         legendDiv.classList.add('legend');
 
-        // Iterate over the iconMap keys to match with .json fields
         Object.keys(iconMap).forEach(property => {
-        const propertyValue = move[property];
-
-        if (propertyValue !== null && propertyValue !== "") {
-            const legendItem = document.createElement('div');
-            legendItem.classList.add('legend-item');
-
-            const iconSpan = document.createElement('span');
-            iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
-            iconSpan.classList.add('icon-tooltip');
-            iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-
-            legendItem.appendChild(iconSpan);
-
-            // Display the value/contents next to the icon if it is not 'true'
-            if (propertyValue !== "true" && propertyValue !== true) {
-                const textNode = document.createTextNode(` ${propertyValue}`);
-                legendItem.appendChild(textNode);
+            const propertyValue = move[property];
+        
+            if (propertyValue === null) {
+                // Do not display the icon or value if null
+                return;
             }
+        
+            if (iconMap[property]) {
+                const legendItem = document.createElement('div');
+                legendItem.classList.add('legend-item');
+        
+                const iconSpan = document.createElement('span');
+                iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
+                iconSpan.classList.add('icon-tooltip');
+                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        
+                legendItem.appendChild(iconSpan);
+        
+                // If the property value is neither null nor 'true', display the value next to the icon
+                if (propertyValue !== 'true') {
+                    const propertyValueSpan = document.createElement('span');
+                    propertyValueSpan.textContent = ` ${propertyValue}`;
+                    legendItem.appendChild(propertyValueSpan);
+                }
+        
+                legendDiv.appendChild(legendItem);
+            }
+        });
+        
 
-            legendDiv.appendChild(legendItem);
-    }
-});
+        moveDiv.appendChild(legendDiv);
+        moveList.appendChild(moveDiv);
+    });
 
     enableSorting(); // Initialize sortable functionality after rendering
     loadCustomPlaylist(); // Load custom playlist if exists
