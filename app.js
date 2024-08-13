@@ -161,24 +161,30 @@ function renderMoves(moves, character) {
         const legendDiv = document.createElement('div');
         legendDiv.classList.add('legend');
 
-        move.properties.forEach(property => {
-            if (iconMap[property]) {
-                const legendItem = document.createElement('div');
-                legendItem.classList.add('legend-item');
+        // Iterate over the iconMap keys to match with .json fields
+        Object.keys(iconMap).forEach(property => {
+        const propertyValue = move[property];
 
-                const iconSpan = document.createElement('span');
-                iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
-                iconSpan.classList.add('icon-tooltip');
-                iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        if (propertyValue !== null && propertyValue !== "") {
+            const legendItem = document.createElement('div');
+            legendItem.classList.add('legend-item');
 
-                legendItem.appendChild(iconSpan);
-                legendDiv.appendChild(legendItem);
+            const iconSpan = document.createElement('span');
+            iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
+            iconSpan.classList.add('icon-tooltip');
+            iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+
+            legendItem.appendChild(iconSpan);
+
+            // Display the value/contents next to the icon if it is not 'true'
+            if (propertyValue !== "true" && propertyValue !== true) {
+                const textNode = document.createTextNode(` ${propertyValue}`);
+                legendItem.appendChild(textNode);
             }
-        });
 
-        moveDiv.appendChild(legendDiv);
-        moveList.appendChild(moveDiv);
-    });
+            legendDiv.appendChild(legendItem);
+    }
+});
 
     enableSorting(); // Initialize sortable functionality after rendering
     loadCustomPlaylist(); // Load custom playlist if exists
