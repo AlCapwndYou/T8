@@ -30,20 +30,16 @@ const iconMap = {
 };
 
 // Function to filter and render moves based on the selected property
-function filterMoves(property) {
-    fetch(`json/${currentCharacter}.json`)
-        .then(response => response.json())
-        .then(data => {
-            let filteredMoves;
-            if (property === 'all') {
-                filteredMoves = data.moves;
-            } else {
-                filteredMoves = data.moves.filter(move => move[property]);
-            }
-            renderMoves(filteredMoves, currentCharacter);
-        })
-        .catch(error => console.error('Error filtering moves:', error));
+function filterMoves(moves) {
+    let filteredMoves;
+    if (filterPreference === 'all') {
+        filteredMoves = moves;
+    } else {
+        filteredMoves = moves.filter(move => move[filterPreference]);
+    }
+    renderMoves(filteredMoves, currentCharacter);
 }
+
 
 // Event listener for filter dropdown
 document.getElementById('filter-select').addEventListener('change', function() {
@@ -109,7 +105,7 @@ function loadCharacterData(character) {
             return response.json();
         })
         .then(data => {
-            renderMoves(data.moves, character);
+            filterMoves(data.moves);
         })
         .catch(error => {
             console.error('Error loading character data:', error);
@@ -192,6 +188,7 @@ function renderMoves(moves, character) {
     enableSorting();
     loadCustomPlaylist();
 }
+
 
 
 // Function to toggle favorite state
