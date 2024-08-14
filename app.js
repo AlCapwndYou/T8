@@ -31,21 +31,25 @@ const iconMap = {
 
 // Function to filter and render moves based on the selected property
 function filterMoves(property) {
-    fetch(`json/${currentCharacter}.json`)
+    fetch(`${currentCharacter}.json`)
         .then(response => response.json())
         .then(data => {
             let filteredMoves;
             if (property === 'all') {
                 filteredMoves = data.moves;
-            } else if (property === 'favorites') {
-                filteredMoves = data.moves.filter(move => localStorage.getItem(`${currentCharacter}-${move.name}`));
             } else {
-                filteredMoves = data.moves.filter(move => move.properties.includes(property));
+                filteredMoves = data.moves.filter(move => move[property]);
             }
             renderMoves(filteredMoves, currentCharacter);
         })
         .catch(error => console.error('Error filtering moves:', error));
 }
+
+// Event listener for filter dropdown
+document.getElementById('filter-select').addEventListener('change', function() {
+    filterPreference = this.value;
+    filterMoves(filterPreference);
+});
 
 // Function to initialize the navigation menu
 function initializeCharacterNav() {
@@ -193,7 +197,6 @@ function renderMoves(moves, character) {
             }
         });
         
-
         moveDiv.appendChild(legendDiv);
         moveList.appendChild(moveDiv);
     });
