@@ -12,10 +12,10 @@ const characters = ['Alisa', 'Azucena', 'Asuka', 'Bryan', 'Claudio', 'Devil Jin'
 // Define icon map for move properties
 const iconMap = {
     BlockPunishable: '👊',
-    SSR: '👟➡️',
     SSL: '👟⬅️',
-    SWR: '🚶➡️',
     SWL: '🚶⬅️',
+    SSR: '👟➡️',
+    SWR: '🚶➡️',
     Heat: '<img src="media/heat4-small.png" alt="Heat" width="32" height="32">',
     Launcher: '⚠️',
     KeyMove: '🔑',
@@ -31,7 +31,7 @@ const iconMap = {
 
 // Function to filter and render moves based on the selected property
 function filterMoves(property) {
-    fetch(`${currentCharacter}.json`)
+    fetch(`json/${currentCharacter}.json`)
         .then(response => response.json())
         .then(data => {
             let filteredMoves;
@@ -50,6 +50,7 @@ document.getElementById('filter-select').addEventListener('change', function() {
     filterPreference = this.value;
     filterMoves(filterPreference);
 });
+
 
 // Function to initialize the navigation menu
 function initializeCharacterNav() {
@@ -122,18 +123,7 @@ function renderMoves(moves, character) {
     const moveList = document.getElementById('move-list');
     moveList.innerHTML = '';
 
-    // Filter moves based on the selected filter option
-    const filteredMoves = moves.filter(move => {
-        if (filterPreference === 'favorites') {
-            return localStorage.getItem(`${character}-${move.name}`);
-        } else if (filterPreference !== 'all') {
-            return move.properties.includes(filterPreference);
-        } else {
-            return true; // Show all moves
-        }
-    });
-
-    filteredMoves.forEach(move => {
+    moves.forEach(move => {
         const moveDiv = document.createElement('div');
         moveDiv.classList.add('move');
         moveDiv.dataset.move = move.input;
@@ -169,41 +159,40 @@ function renderMoves(moves, character) {
 
         Object.keys(iconMap).forEach(property => {
             const propertyValue = move[property];
-        
+
             if (propertyValue === null || propertyValue === '') {
-                // Do not display the icon or value if null
                 return;
             }
-        
+
             if (iconMap[property]) {
                 const legendItem = document.createElement('div');
                 legendItem.classList.add('legend-item');
-        
+
                 const iconSpan = document.createElement('span');
-                iconSpan.innerHTML = iconMap[property]; // Allows for HTML/image in iconMap
+                iconSpan.innerHTML = iconMap[property];
                 iconSpan.classList.add('icon-tooltip');
                 iconSpan.title = property.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-        
+
                 legendItem.appendChild(iconSpan);
-        
-                // If the property value is neither null nor 'true', display the value next to the icon
+
                 if (propertyValue !== 'true') {
                     const propertyValueSpan = document.createElement('span');
                     propertyValueSpan.textContent = ` ${propertyValue}`;
                     legendItem.appendChild(propertyValueSpan);
                 }
-        
+
                 legendDiv.appendChild(legendItem);
             }
         });
-        
+
         moveDiv.appendChild(legendDiv);
         moveList.appendChild(moveDiv);
     });
 
-    enableSorting(); // Initialize sortable functionality after rendering
-    loadCustomPlaylist(); // Load custom playlist if exists
+    enableSorting();
+    loadCustomPlaylist();
 }
+
 
 // Function to toggle favorite state
 function toggleFavorite(character, moveName, icon) {
