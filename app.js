@@ -32,13 +32,18 @@ const iconMap = {
 // Function to filter and render moves based on the selected property
 function filterMoves(moves) {
     let filteredMoves;
+
     if (filterPreference === 'all') {
         filteredMoves = moves;
+    } else if (filterPreference === 'favorites') {
+        filteredMoves = moves.filter(move => localStorage.getItem(`${currentCharacter}-${move.name}`));
     } else {
         filteredMoves = moves.filter(move => move[filterPreference]);
     }
+
     renderMoves(filteredMoves, currentCharacter);
 }
+
 
 
 // Event listener for filter dropdown
@@ -275,12 +280,23 @@ function toggleSortable() {
 // Populate filter dropdown based on iconMap keys
 function populateFilterOptions() {
     const filterSelect = document.getElementById('filter-select');
+
+    const allOption = document.createElement('option');
+    allOption.value = 'all';
+    allOption.textContent = 'Show All';
+    filterSelect.appendChild(allOption);
+
     for (const property in iconMap) {
         const option = document.createElement('option');
         option.value = property;
         option.textContent = `Show ${property}`;
         filterSelect.appendChild(option);
     }
+
+    const favoritesOption = document.createElement('option');
+    favoritesOption.value = 'favorites';
+    favoritesOption.textContent = 'Show Favorites';
+    filterSelect.appendChild(favoritesOption);
 }
 
 populateFilterOptions();
