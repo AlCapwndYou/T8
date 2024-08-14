@@ -281,10 +281,10 @@ function toggleSortable() {
 function populateFilterOptions() {
     const filterSelect = document.getElementById('filter-select');
 
-    const allOption = document.createElement('option');
-    allOption.value = 'all';
-    allOption.textContent = 'Show All';
-    filterSelect.appendChild(allOption);
+   // const allOption = document.createElement('option');
+   // allOption.value = 'all';
+   // allOption.textContent = 'Show All';
+   // filterSelect.appendChild(allOption);
 
     for (const property in iconMap) {
         const option = document.createElement('option');
