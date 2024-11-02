@@ -113,7 +113,7 @@
         "SSR": "",
         "SSL": "",
         "SWR": "",
-        "SWL": "",
+        "SWL": "true",
         "Heat": "",
         "Launcher": "",
         "KeyMove": "",
